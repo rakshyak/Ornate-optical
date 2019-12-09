@@ -9,9 +9,8 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    User.belongsTo(models.Cart, {
-      foreignKey: 'cartId',
-      onDelete: 'CASCADE'
+    User.hasMany(models.Cart, {
+      foreignKey: 'cartId'
     })
     User.hasMany(models.Review, {
       foreignKey: 'reviewId'
