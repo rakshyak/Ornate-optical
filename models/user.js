@@ -9,7 +9,13 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING
   }, {});
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsTo(models.Cart, {
+      foreignKey: 'cartId',
+      onDelete: 'CASCADE'
+    })
+    User.hasMany(models.Review, {
+      foreignKey: 'reviewId'
+    })
   };
   return User;
 };

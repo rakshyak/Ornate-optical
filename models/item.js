@@ -4,10 +4,19 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     price: DataTypes.FLOAT,
     quantity: DataTypes.INTEGER,
-    categotyId: DataTypes.INTEGER
+    categoryId: DataTypes.INTEGER
   }, {});
   Item.associate = function(models) {
-    // associations can be defined here
+    Item.belongsTo(models.Category, {
+      foreignKey: 'categoryId',
+      onDelete: 'CASCADE'
+    })
+    Item.hasMany(models.Review, {
+      foreignKey: 'reviewId'
+    })
+    Item.hasMany(models.Cart, {
+      foreignKey: 'cartId'
+    })
   };
   return Item;
 };
