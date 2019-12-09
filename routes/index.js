@@ -1,8 +1,7 @@
 const { Router } = require('express')
 const controllers = require('../controllers')
 const router = Router()
-
-const restrict = require('../helpers')
+// const restrict = require('../helpers')
 
 router.get('/', (req,res) => res.send('This is root from routes!!'))
 
@@ -15,5 +14,4 @@ router.get('/users/:id', controllers.getUserById)
 router.put('/users/:id', controllers.updateUser)
 router.delete('/users/:id', controllers.deleteUser)
 
-
-module.exports = router;
+module.exports = router
