@@ -65,6 +65,11 @@ const getAllUsers = async (req, res) => {
     try {
         console.log('start')
         const users = await User.findAll({
+            include: [
+                {
+                    model: Cart
+                }
+            ]
         });
         console.log(users)
         return res.status(200).json({ users });

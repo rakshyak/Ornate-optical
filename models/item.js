@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
     Item.hasMany(models.Review, {
       foreignKey: 'reviewId'
     })
-    Item.hasMany(models.Cart, {
-      foreignKey: 'cartId'
+    Item.belongsToMany(models.User, {
+      through: 'Cart',
+      foreignKey: 'itemId'
     })
   };
   return Item;

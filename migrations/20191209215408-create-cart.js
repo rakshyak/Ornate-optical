@@ -14,7 +14,7 @@ module.exports = {
         references: {
           model: 'Users',
           key: 'id',
-          as: 'userId',
+          as: 'userId'
         }
       },
       itemId: {
@@ -23,7 +23,7 @@ module.exports = {
         references: {
           model: 'Items',
           key: 'id',
-          as: 'itemId',
+          as: 'itemId'
         }
       },
       createdAt: {

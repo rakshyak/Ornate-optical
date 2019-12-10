@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     Cart.belongsTo(models.Item, {
       foreignKey: 'itemId',
       onDelete: 'CASCADE'
-    })
+    }),
     Cart.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
