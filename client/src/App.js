@@ -1,12 +1,12 @@
 import React from 'react'
-import Home from './screens/Home'
+import Container from './components/Container'
+import Login from './screens/Login'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+    <>
+      <Container />
+    </>
+  )
 }
 
-export default App

@@ -1,5 +1,7 @@
 import React from 'react'
+import Navbar from '../shared/Navbar'
 import { NavLink } from 'react-router-dom'
+
 
 const authenticatedOptions = (
     <div className="links">
@@ -18,6 +20,11 @@ const alwaysOptions = (
     <div className="links">
         <NavLink to="/">Ornate Optical</NavLink>
     </div>
+)
+
+const Header = () => (
+    <Navbar />
+
 )
 
 export default Header
