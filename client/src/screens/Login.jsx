@@ -1,8 +1,6 @@
 import React from 'react'
-import SignIn from '../screens/SignIn'
-import SignUp from '../screens/SignUp'
-import SignOut from './SignOut'
-
+import SignIn from './SignIn'
+import SignUp from './SignUp'
 
 const Login = () => {
     return(

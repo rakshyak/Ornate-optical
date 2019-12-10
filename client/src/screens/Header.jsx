@@ -1,6 +1,8 @@
 import React from 'react'
+import Navbar from '../shared/Navbar'
 import { NavLink } from 'react-router-dom'
 import Navbar from '../shared/Navbar'
+
 
 const authenticatedOptions = (
     <div className="links">
@@ -21,14 +23,8 @@ const alwaysOptions = (
     </div>
 )
 
-const Header = ({ user }) =>(   
-    <Navbar>
-    {user && <span className="navbar-text">Welcome, {user.email}</span>}
-    <div className="nav">
-      {alwaysOptions}
-      {user ? authenticatedOptions : unauthenticatedOptions}
-    </div>
-  </Navbar>
+const Header = () => (
+    <Navbar />
 
 )
 

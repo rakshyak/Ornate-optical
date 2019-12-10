@@ -1,13 +1,12 @@
 import React from 'react'
-import Container from '../src/components/Container'
-import Layout from './shared/Layout'
+import Container from './components/Container'
+import Login from './screens/Login'
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
+    <>
       <Container />
-    </div>
-  );
+    </>
+  )
 }
 
-export default App

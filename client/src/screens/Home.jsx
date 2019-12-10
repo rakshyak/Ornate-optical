@@ -5,7 +5,6 @@ const Home = () => (
     <>
         <Layout>
             <h4>Hello world</h4>
-            {/* <Login /> */}
         </Layout>
 
     </>
