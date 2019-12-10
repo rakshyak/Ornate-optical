@@ -67,12 +67,19 @@ const getAllUsers = async (req, res) => {
         const users = await User.findAll({
             include: [
                 {
-                    model: Cart
+                    model: Item,
+                    as: 'items',
+                    required:false,
+                    through: {
+                        model: Cart,
+                        as: 'cart'
+                    }
+                    
                 }
             ]
         });
         console.log(users)
-        return res.status(200).json({ users });
+        // return res.status(200).json({ users });
     } catch (error) {
         return res.status(500).send(error.message);
     }

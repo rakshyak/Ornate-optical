@@ -15,11 +15,11 @@ router.get('/users/:id', controllers.getUserById)
 router.put('/users/:id', controllers.updateUser)
 router.delete('/users/:id', controllers.deleteUser)
 
-router.post('/items', controllers.CreateItem)
+// router.post('/items', controllers.CreateItem)
 
-router.get('/items', controllers.getAllItems)
-router.get('/users/:id', controllers.getUserById)
-router.put('/users/:id', controllers.updateUser)
-router.delete('/users/:id', controllers.deleteUser)
+// router.get('/items', controllers.getAllItems)
+// router.get('/users/:id', controllers.getUserById)
+// router.put('/users/:id', controllers.updateUser)
+// router.delete('/users/:id', controllers.deleteUser)
 
 module.exports = router
