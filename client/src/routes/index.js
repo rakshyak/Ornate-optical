@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom'
 import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
+import Items from '../screens/Items'
 import Login from '../screens/Login'
 import AuthenticatedRoute from './AuthenticatedRoute'
-
 const Routes = ({ setUser, clearUser }) => (
     <Switch>
         <Route
