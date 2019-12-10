@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
+import Items from '../screens/Items'
 
 const Routes = ({ setUser, clearUser }) => (
     <Switch>
@@ -19,6 +20,7 @@ const Routes = ({ setUser, clearUser }) => (
         path="sign-out"
         render={props => <SignOut {...props} clearUser={clearUser}/>}
         />
+
     </Switch>
 )
 
