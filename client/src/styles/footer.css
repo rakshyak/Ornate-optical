@@ -1,0 +1,17 @@
+footer {
+    display: flex;
+}
+
+footer .customer-footer {
+    display: flex;
+}
+footer .customer-footer ul {
+    list-style-type: none;
+}
+footer .s-ability-footer {
+    display: flex;
+}
+
+footer .follow-bar {
+    display: flex;
+}
