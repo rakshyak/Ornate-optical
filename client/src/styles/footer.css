@@ -1,17 +1,41 @@
 footer {
+    justify-content: space-evenly;
     display: flex;
+    font-family: 'Bebas Neue', cursive;
 }
-
 footer .customer-footer {
     display: flex;
+    flex-direction: column;
+}
+footer .customer-footer h3 {
+    font-size: 26px;
 }
 footer .customer-footer ul {
     list-style-type: none;
+    font-size: 22px;
+    padding-inline-start: 0;
 }
 footer .s-ability-footer {
     display: flex;
+    flex-direction: column;
 }
-
+footer .s-ability-footer h3 {
+    font-size: 26px;
+}
+footer .s-ability-footer ul {
+    list-style-type: none;
+    font-size: 22px;
+    padding-inline-start: 0;
+}
 footer .follow-bar {
     display: flex;
+    flex-direction: column;
+}
+footer .follow-bar h3 {
+    font-size: 26px;
+}
+footer .follow-bar ul {
+    list-style-type: none;
+    font-size: 22px;
+    padding-inline-start: 0;
 }

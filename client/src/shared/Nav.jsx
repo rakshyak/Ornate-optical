@@ -11,7 +11,7 @@ const Nav = () => (
         <li>SERVICES</li>
         </ul>
         <ul className="login-bar">
-        <li>LOGIN</li>
+        <NavLink to="/login">LOGIN</NavLink>
         <li>CART</li>
         </ul>
 	</nav>
