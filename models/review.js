@@ -12,7 +12,12 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     itemId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Item',
+        key: 'id',
+        as: 'itemId'
+      }
     }
   }, {});
   Review.associate = function (models) {
@@ -20,8 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     })
-    Review.hasMany(models.Item, {
-      foreignKey: 'itemId'
+    Review.belongsTo(models.Item, {
+      foreignKey: 'itemId',
+      onDelete: 'CASCADE'
     })
   }
   return Review;

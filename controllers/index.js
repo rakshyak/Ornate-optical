@@ -149,17 +149,41 @@ const createItem = async (req, res) => {
 
 const getAllItems = async (req, res) => {
     try {
-        const items = await items.findAll()
+        const items = await Item.findAll( {
+            attributes: ['id', 'name', 'price', 'quantity'],
+            include: [
+                {
+                    model: Review
+                },
+                {
+                    model: Category,
+                    attributes: ['name']
+                }
+            ]
+
+        })
         return res.status(200).json({ items })
     } catch (error) {
         return res.status(500).send(error.message)
     }
+
+    
 }
 
 const getItemById = async (req, res) => {
     try {
         const { id } = req.params
         const item = await Item.findOne({
+            attributes: ['id', 'name', 'price', 'quantity'],
+            include: [
+                {
+                    model: Review
+                },
+                {
+                    model: Category,
+                    attributes: ['name']
+                }
+            ],
             where: { id: id }
         })
         if (item) {
