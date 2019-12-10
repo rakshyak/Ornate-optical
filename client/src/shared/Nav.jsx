@@ -1,14 +1,17 @@
 import React from 'react'
-// import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Nav = () => (
 	<nav>
-        <h1>Ornate Optical</h1>
-        <ul>
-		<li>Sunglasses</li>
-        <li>Glasses</li>
-        <li>Stories</li>
-        <li>Services</li>
+        <NavLink to="/">ORNATE OPTICAL</NavLink>
+        <ul className="main-bar">
+        <li>MEN</li>
+        <li>WOMEN</li>
+        <li>SERVICES</li>
+        </ul>
+        <ul className="login-bar">
+        <li>LOGIN</li>
+        <li>CART</li>
         </ul>
 	</nav>
 )

@@ -1,12 +1,12 @@
-import React from 'react';
-import SignIn from './screens/SignIn'
-import Nav from './shared/Nav'
-import Footer from './shared/Footer'
+import React from 'react'
+import Layout from './shared/Layout'
 
 function App() {
   return (
     <div className="App">
-      <SignIn />
+
+      <Layout />
+
     </div>
   );
 }

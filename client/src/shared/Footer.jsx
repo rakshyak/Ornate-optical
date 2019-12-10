@@ -11,7 +11,7 @@ const Footer = () => (
 		<li>TRACK YOUR ORDER</li>
 		</ul>
 		</div>
-		<div className="sustainability-footer">
+		<div className="s-ability-footer">
         <h3>Sustainability</h3>
 		<ul>
 			<li>OUR STATEMENT</li>
