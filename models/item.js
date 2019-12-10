@@ -4,9 +4,16 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     price: DataTypes.FLOAT,
     quantity: DataTypes.INTEGER,
-    categoryId: DataTypes.INTEGER
-  }, {});
-  Item.associate = function(models) {
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Category',
+        key: 'id',
+        as: 'caregoryId'
+      }
+    }
+    }, {});
+  Item.associate = function (models) {
     Item.belongsTo(models.Category, {
       foreignKey: 'categoryId',
       onDelete: 'CASCADE'
