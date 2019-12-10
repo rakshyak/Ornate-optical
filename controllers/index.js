@@ -67,13 +67,8 @@ const getAllUsers = async (req, res) => {
         const users = await User.findAll({
             include: [
                 {
-                    model: Item,
-                    as: 'items',
-                    required:false,
-                    through: {
-                        model: Cart,
-                        as: 'cart'
-                    }
+                    model: Cart,
+                    as: 'UserId'
                     
                 }
             ]

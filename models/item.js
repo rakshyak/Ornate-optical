@@ -7,19 +7,22 @@ module.exports = (sequelize, DataTypes) => {
     categoryId: DataTypes.INTEGER
   }, {});
   Item.associate = function(models) {
-    Item.belongsTo(models.Category, {
-      foreignKey: 'categoryId',
-      onDelete: 'CASCADE'
-    })
+    // Item.belongsTo(models.Category, {
+    //   foreignKey: 'categoryId',
+    //   onDelete: 'CASCADE'
+    // })
     // Item.hasMany(models.Review, {
     //   foreignKey: 'reviewId'
     // })
-    Item.belongsTo(models.User, {
-      through: 'Item',
-      as: 'users',
-      foreignKey: 'itemId',
-      onDelete: 'CASCADE'
-    })
+    Item.belongsTo(models.Cart)
+
+
+    // Item.belongsToMany(models.User, {
+    //   through: 'Cart',
+    //   as: 'users',
+    //   foreignKey: 'itemId',
+    //   onDelete: 'CASCADE'
+    // })
   };
   return Item;
 };

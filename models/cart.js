@@ -4,13 +4,9 @@ module.exports = (sequelize, DataTypes) => {
     userId: DataTypes.INTEGER,
     itemId: DataTypes.INTEGER
   }, {});
-  // Cart.associate = function(models) {
-  //   Cart.hasMany(models.Item, {
-  //     foreignKey: 'itemId'
-  //   }),
-  //   Cart.hasMany(models.User, {
-  //     foreignKey: 'userId'
-  //   })
-  // };
+  Cart.associate = function(models) {
+    Cart.hasMany(models.Item)
+    Cart.belongsTo(models.User)
+  };
   return Cart;
 };
