@@ -3,10 +3,13 @@ import React from 'react'
 
 const Nav = () => (
 	<nav>
-		<h2>sunglasses</h2>
-        <h2>glasses</h2>
-        <h2>stories</h2>
-        <h2>service</h2>
+        <h1>Ornate Optical</h1>
+        <ul>
+		<li>Sunglasses</li>
+        <li>Glasses</li>
+        <li>Stories</li>
+        <li>Services</li>
+        </ul>
 	</nav>
 )
 

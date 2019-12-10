@@ -2,9 +2,24 @@ import React from 'react'
 
 const Footer = () => (
 	<footer>
-		<h1>Customer Service</h1>
-        <h1>Sustainability</h1>
-        <h1>Follow Us On</h1>
+		<div className="customer-footer">
+		<h3>Customer Service</h3>
+		<ul>
+		<li>CONTACT US</li>
+		<li>SHIPPING</li>
+		<li>RETURNS</li>
+		<li>TRACK YOUR ORDER</li>
+		</ul>
+		</div>
+		<div className="sustainability-footer">
+        <h3>Sustainability</h3>
+		<ul>
+			<li>OUR STATEMENT</li>
+			<li>PRODUCTION</li>
+		</ul>
+		</div>
+        <li>Follow Us On</li>
+		</ul>
 	</footer>
 )
 
