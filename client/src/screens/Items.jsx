@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Layout from '../components/shared/Layout'
-import { getItems } from '../services/items'
+import Layout from '../shared/Layout'
+import { getItems } from '../services/item'
 
 export default class Items extends Component {
   constructor() {
