@@ -14,4 +14,10 @@ router.get('/users/:id', controllers.getUserById)
 router.put('/users/:id', controllers.updateUser)
 router.delete('/users/:id', controllers.deleteUser)
 
+router.post('/items', controllers.createItem)
+router.get('/items', controllers.getAllItems)
+router.get('/items/:id', controllers.getItemById)
+router.put('/items/:id', controllers.updateItem)
+router.delete('/items/:id', controllers.deleteUser)
+
 module.exports = router
