@@ -18,6 +18,7 @@ const Footer = () => (
 			<li>PRODUCTION</li>
 		</ul>
 		</div>
+		<ul>
         <li>Follow Us On</li>
 		</ul>
 	</footer>
