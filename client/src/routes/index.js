@@ -4,7 +4,8 @@ import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
 import Items from '../screens/Items'
-
+import Login from '../screens/Login'
+import AuthenticatedRoute from './AuthenticatedRoute'
 const Routes = ({ setUser, clearUser }) => (
     <Switch>
         <Route
@@ -17,9 +18,13 @@ const Routes = ({ setUser, clearUser }) => (
         />
         <Route
         exact
-        path="sign-out"
+        path="/sign-out"
         render={props => <SignOut {...props} clearUser={clearUser}/>}
         />
+        <AuthenticatedRoute
+        exact
+        path="/login"
+        render={ <Login /> } />
 
     </Switch>
 )

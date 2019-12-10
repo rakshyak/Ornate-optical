@@ -1,13 +1,12 @@
 import React from 'react'
-import Layout from './shared/Layout'
+import Home from './screens/Home'
 
 function App() {
   return (
     <div className="App">
-      <Layout />
-
+      <Home />
     </div>
   );
 }
 
-export default App;
+export default App

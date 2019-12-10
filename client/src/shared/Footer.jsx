@@ -19,12 +19,14 @@ const Footer = () => (
 			<li>PRODUCTION</li>
 		</ul>
 		</div>
-		<ul className="follow-bar">
+		<div className="follow-bar">
         <h3>FOLLOW US ON</h3>
+		<ul>
 		<li>INSTAGRAM</li>
 		<li>FACEBOOK</li>
 		<li>TWITTER</li>
 		</ul>
+		</div>
 	</footer>
 )
 
