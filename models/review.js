@@ -3,18 +3,26 @@ module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('Review', {
     rating: DataTypes.INTEGER,
     review: DataTypes.STRING,
-    itemId: DataTypes.INTEGER,
-    userId: DataTypes.INTEGER
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'User',
+        key: 'id',
+        as: 'userId'
+      }
+    },
+    itemId: {
+      type: DataTypes.INTEGER
+    }
   }, {});
-  Review.associate = function(models) {
-    Review.belongsTo(models.Item, {
-      foreignKey: 'itemId',
-      onDelete: 'CASCADE'
-    })
+  Review.associate = function (models) {
     Review.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     })
-  };
+    Review.hasMany(models.Item, {
+      foreignKey: 'itemId'
+    })
+  }
   return Review;
 };

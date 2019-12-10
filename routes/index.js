@@ -9,9 +9,17 @@ router.post('/sign-up', controllers.signUp)
 router.post('/sign-in', controllers.signIn)
 
 router.post('/users', controllers.createUser)
+
 router.get('/users', controllers.getAllUsers)
 router.get('/users/:id', controllers.getUserById)
 router.put('/users/:id', controllers.updateUser)
 router.delete('/users/:id', controllers.deleteUser)
+
+// router.post('/items', controllers.CreateItem)
+
+// router.get('/items', controllers.getAllItems)
+// router.get('/users/:id', controllers.getUserById)
+// router.put('/users/:id', controllers.updateUser)
+// router.delete('/users/:id', controllers.deleteUser)
 
 module.exports = router

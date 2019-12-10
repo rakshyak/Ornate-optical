@@ -11,12 +11,26 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'categoryId',
       onDelete: 'CASCADE'
     })
-    Item.hasMany(models.Review, {
-      foreignKey: 'reviewId'
-    })
+    // // Item.hasMany(models.Review, {
+    // //   foreignKey: 'reviewId'
+    // // })
+    // Item.hasMany(models.Review, {
+    //   foreignKey: 'reviewId'
+    // })
     Item.hasMany(models.Cart, {
-      foreignKey: 'cartId'
+      foreignKey: 'itemId'
     })
+    Item.hasMany(models.Review, {
+      foreignKey: 'itemId'
+    })
+
+
+    // Item.belongsToMany(models.User, {
+    //   through: 'Cart',
+    //   as: 'users',
+    //   foreignKey: 'itemId',
+    //   onDelete: 'CASCADE'
+    // })
   };
   return Item;
 };

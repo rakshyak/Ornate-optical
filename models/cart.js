@@ -1,18 +1,28 @@
-'use strict';
+'use strict'
 module.exports = (sequelize, DataTypes) => {
   const Cart = sequelize.define('Cart', {
-    userId: DataTypes.INTEGER,
-    itemId: DataTypes.INTEGER
-  }, {});
-  Cart.associate = function(models) {
-    Cart.belongsTo(models.Item, {
-      foreignKey: 'itemId',
-      onDelete: 'CASCADE'
-    })
+    userId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'User',
+        key: 'id',
+        as: 'userId'
+      }
+    },
+    itemId: {
+      type: DataTypes.INTEGER
+    }
+
+  }, {}
+  );
+  Cart.associate = function (models) {
     Cart.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     })
-  };
-  return Cart;
-};
+    Cart.hasMany(models.Item, {
+      foreignKey: 'itemId'
+    })
+  }
+  return Cart
+}
