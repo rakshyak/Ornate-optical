@@ -1,12 +1,21 @@
 import React from 'react'
-import SignIn from './Signin'
-import SignUp from './SignUp'
+import SignIn from '../screens/SignIn'
+import SignUp from '../screens/SignUp'
+import SignOut from './SignOut'
+
 
 const Login = () => {
-    return (
+    return(
+    <>
     <>
     <SignIn />
-    <SignUp />
     </>
-    )}
+    <>
+    <SignOut />
+    </>
+    </>
+    )
+}
+
 export default Login
+

@@ -1,10 +1,11 @@
 import React from 'react'
-import Home from './screens/Home'
+import Container from '../src/components/Container'
+import Layout from './shared/Layout'
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <Container />
     </div>
   );
 }

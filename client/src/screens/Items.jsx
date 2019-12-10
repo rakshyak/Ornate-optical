@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Layout from '../components/shared/Layout'
-import { getItems } from '../services/items'
+import Layout from '../shared/Layout'
+import { getItems } from '../services/item'
 
 export default class Items extends Component {
   constructor() {
@@ -58,7 +58,7 @@ export default class Items extends Component {
       return (
         <Layout>
           <h4>Sunglasses</h4>
-          {!items.length ? <h3>No glasses at this time.</h3> : null}
+          {items.length ? <h3>No glasses at this time.</h3> : null}
           <div className="item-container">{this.renderItems()}</div>
         </Layout>
       )

@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Navbar from '../shared/Navbar'
 
 const authenticatedOptions = (
     <div className="links">
@@ -18,6 +19,17 @@ const alwaysOptions = (
     <div className="links">
         <NavLink to="/">Ornate Optical</NavLink>
     </div>
+)
+
+const Header = ({ user }) =>(   
+    <Navbar>
+    {user && <span className="navbar-text">Welcome, {user.email}</span>}
+    <div className="nav">
+      {alwaysOptions}
+      {user ? authenticatedOptions : unauthenticatedOptions}
+    </div>
+  </Navbar>
+
 )
 
 export default Header

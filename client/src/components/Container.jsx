@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { getItems } from '../services/items'
+import { getItems } from '../services/item'
 import Routes from '../routes'
 import Header from '../screens/Header'
+
 
 export default class Container extends Component {
   constructor(props) {
