@@ -1,9 +1,10 @@
 import React from 'react'
+import '../styles/footer.css'
 
 const Footer = () => (
 	<footer>
 		<div className="customer-footer">
-		<h3>Customer Service</h3>
+		<h3>CUSTOMER SERVICE</h3>
 		<ul>
 		<li>CONTACT US</li>
 		<li>SHIPPING</li>
@@ -12,14 +13,17 @@ const Footer = () => (
 		</ul>
 		</div>
 		<div className="s-ability-footer">
-        <h3>Sustainability</h3>
+        <h3>SUSTAINABILITY</h3>
 		<ul>
 			<li>OUR STATEMENT</li>
 			<li>PRODUCTION</li>
 		</ul>
 		</div>
-		<ul>
-        <li>Follow Us On</li>
+		<ul className="follow-bar">
+        <h3>FOLLOW US ON</h3>
+		<li>INSTAGRAM</li>
+		<li>FACEBOOK</li>
+		<li>TWITTER</li>
 		</ul>
 	</footer>
 )

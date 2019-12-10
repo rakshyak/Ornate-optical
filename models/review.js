@@ -1,13 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Review = sequelize.define('Review', {
-    userId: DataTypes.INTEGER,
     rating: DataTypes.INTEGER,
     review: DataTypes.STRING,
-    itemId: DataTypes.INTEGER
+    itemId: DataTypes.INTEGER,
+    userId: DataTypes.INTEGER
   }, {});
   Review.associate = function(models) {
-    // associations can be defined here
+    Review.belongsTo(models.Item, {
+      foreignKey: 'itemId',
+      onDelete: 'CASCADE'
+    })
+    Review.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
+    })
   };
   return Review;
 };

@@ -1,0 +1,31 @@
+nav {
+    font-family: 'Bebas Neue', cursive;
+    display: flex;
+}
+a {
+    text-decoration: none;
+    margin: 20px;
+    font-size: 36px;
+    color: black;
+    display: flex;  
+}
+nav .main-bar {
+    font-size: 28px;
+    list-style-type: none;
+    display: flex;  
+    padding-inline-start: 0; 
+}
+nav .main-bar li {
+    margin: 10px 4.4em;
+}
+
+nav .login-bar {
+    font-size: 26px;
+    list-style-type: none;
+    display: flex;
+}
+
+nav .login-bar li {
+    margin: 0px 2em;
+}
+
