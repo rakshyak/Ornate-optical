@@ -5,8 +5,13 @@ module.exports = (sequelize, DataTypes) => {
     itemId: DataTypes.INTEGER
   }, {});
   Cart.associate = function(models) {
-    Cart.hasMany(models.Item, {
-      foreignKey: 'itemId'
+    Cart.belongsTo(models.Item, {
+      foreignKey: 'itemId',
+      onDelete: 'CASCADE'
+    })
+    Cart.belongsTo(models.User, {
+      foreignKey: 'userId',
+      onDelete: 'CASCADE'
     })
   };
   return Cart;
