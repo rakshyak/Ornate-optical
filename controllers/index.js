@@ -1,12 +1,12 @@
 const SALT_ROUNDS = 11
 const TOKEN_KEY = 'areallylonggoodkey'
-const {Cart, User, Category, Item, Review} = require('../models')
-const signUp = async (req,res) => {
+const { Cart, User, Category, Item, Review } = require('../models')
+const signUp = async (req, res) => {
     try {
         console.log(req.body)
         const { username, email, password } = req.body
         const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
-        const user = await user.create ({
+        const user = await user.create({
             username,
             email,
             password_digest
@@ -22,11 +22,11 @@ const signUp = async (req,res) => {
         console.log(
             'You made it to the signUp controller, but there was an error ;('
         )
-        return res.status(400).json ({ error: error.message })
+        return res.status(400).json({ error: error.message })
     }
 }
 
-const signIn = async (req,res) => {
+const signIn = async (req, res) => {
     try {
         console.log(req.body)
         const { username, password } = req.body
@@ -35,7 +35,7 @@ const signIn = async (req,res) => {
                 username
             }
         })
-        if(await bcrypt.compare(password, user.dataValues.password_digest)) {
+        if (await bcrypt.compare(password, user.dataValues.password_digest)) {
             const payload = {
                 id: user.id,
                 username: user.username,
@@ -63,13 +63,12 @@ const createUser = async (req, res) => {
 
 const getAllUsers = async (req, res) => {
     try {
-        console.log('start')
         const users = await User.findAll({
             include: [
                 {
                     model: Cart
-                    
-                }
+                },
+                { model: Review }
             ]
         });
         return res.status(200).json({ users });
@@ -83,6 +82,12 @@ const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
         const user = await User.findOne({
+            include: [
+                {
+                    model: Cart
+                },
+                { model: Review }
+            ],
             where: { id: id }
         });
         console.log(user)

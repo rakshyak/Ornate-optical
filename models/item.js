@@ -11,13 +11,16 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'categoryId',
       onDelete: 'CASCADE'
     })
+    // // Item.hasMany(models.Review, {
+    // //   foreignKey: 'reviewId'
+    // // })
     // Item.hasMany(models.Review, {
     //   foreignKey: 'reviewId'
     // })
-    Item.hasMany(models.Review, {
-      foreignKey: 'reviewId'
+    Item.hasMany(models.Cart, {
+      foreignKey: 'itemId'
     })
-    Item.belongsTo(models.Cart, {
+    Item.hasMany(models.Review, {
       foreignKey: 'itemId'
     })
 
