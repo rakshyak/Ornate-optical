@@ -20,3 +20,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api', routes)
+
+
+
