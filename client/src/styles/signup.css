@@ -1,0 +1,44 @@
+input {
+    margin-top: 20px;
+    height: 30px;
+    width: 35em;
+    border: 1.5px solid black;
+}
+.sup-container {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Bebas Neue', cursive;
+}
+.sup-container .form-container h2 {
+    font-size: 36px;
+}
+.sup-container .form-container .sup-username {
+    margin-bottom: 20px;
+}
+.sup-container .form-container .sup-username label {
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+}
+.sup-container .form-container .sup-email label {
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+}
+.sup-container .form-container .sup-pwd label {
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+}
+.sup-container .form-container .sup-pwdconf label {
+    font-size: 22px;
+    display: flex;
+    flex-direction: row;
+}
+.sup-container .form-container .sup-email {
+    margin-bottom: 20px;
+}
+.sup-container .form-container .sup-pwd {
+    margin-bottom: 20px;
+}
+

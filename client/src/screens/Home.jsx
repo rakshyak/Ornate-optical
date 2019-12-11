@@ -2,11 +2,9 @@ import React from 'react'
 import Layout from '../shared/Layout'
 
 const Home = () => (
-    <>
-        <Layout>
-            <h4>Hello world</h4>
-        </Layout>
 
-    </>
+        
+            <h4>Hello world</h4>
+
 )
 export default Home

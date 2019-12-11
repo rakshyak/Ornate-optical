@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { getItems } from '../services/item'
 import Routes from '../routes'
 import Header from '../screens/Header'
+import Layout from '../shared/Layout'
+
 
 export default class Container extends Component {
   constructor(props) {
@@ -36,6 +38,7 @@ export default class Container extends Component {
     return (
       <>
         <Header user={user} />
+        <Layout>
         <main className="container">
           <Routes
             getItems={this.fetchItems}
@@ -46,6 +49,7 @@ export default class Container extends Component {
             clearUser={this.clearUser}
           />
         </main>
+        </Layout>
       </>
     )
   }

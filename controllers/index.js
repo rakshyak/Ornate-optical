@@ -1,9 +1,8 @@
-const bcrpt = require('bcrypt')
+const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const { Cart, User, Category, Item, Review } = require('../models')
-
 const SALT_ROUNDS = 11
 const TOKEN_KEY = 'areallylonggoodkey'
+const { Cart, User, Category, Item, Review } = require('../models')
 
 
 const signUp = async (req, res) => {
@@ -47,7 +46,7 @@ const signIn = async (req, res) => {
                 email: user.email
             }
             const token = jwt.sign(payload, TOKEN_KEY)
-            return res.status(201).json({ user, token })
+            return res.status(200).json({ user, token })
         } else {
             res.status(401).send('Invalid Credentials')
         }
