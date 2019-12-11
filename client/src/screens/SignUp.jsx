@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { signUp, signInUser } from '../services/auth'
+import '../styles/signup.css'
+
 
 class SignUp extends Component {
     constructor() {
@@ -47,12 +49,12 @@ class SignUp extends Component {
         const toggleForm = this.state.isError ? 'danger' : ''
         if(this.state.isError) {
             return (
-                <button type="submit" className={toggleForm}>
+                <button type="SUBMIT" className={toggleForm}>
                     {this.state.errorMsg}
                 </button>
             )
         } else {
-            return <button type="submit">Sign In</button>
+            return <button type="SUBMIT">SIGN UP</button>
         }
     }
 
@@ -60,11 +62,12 @@ class SignUp extends Component {
         const { email, username, password, passwordConfirmation } = this.state
 
         return (
-            <div className="row">
+            <div className="sup-container">
                 <div className="form-container">
-                    <h2>Sign Up</h2>
+                    <h2>CREATE ACCOUNT</h2>
                     <form onSubmit={this.onSignUp}>
-                        <label>Username</label>
+                        <div className="sup-username">
+                        <label>USERNAME</label>
                         <input
                         required
                         type="text"
@@ -73,7 +76,9 @@ class SignUp extends Component {
                         placeholder="Enter Username"
                         onChange={this.handleChange}
                         />
-                        <label>Email Address</label>
+                        </div>
+                        <div className="sup-email">
+                        <label>EMAIL ADDRESS</label>
                         <input
                         required
                         type="email"
@@ -82,7 +87,9 @@ class SignUp extends Component {
                         placeholder="Enter Email"
                         onChange={this.handleChange}
                         />
-                        <label>Password</label>
+                        </div>
+                        <div className="sup-pwd">
+                        <label>PASSWORD</label>
                         <input
                         required
                         name="password"
@@ -91,7 +98,9 @@ class SignUp extends Component {
                         placeholder="Password"
                         onChange={this.handleChange}
                         />
-                        <label>Password Confirmation</label>
+                        </div>
+                        <div className="sup-pwdconf">
+                        <label>PASSWORD CONFIRMATION</label>
                         <input
                         required
                         name="passwordConfirmation"
@@ -100,6 +109,7 @@ class SignUp extends Component {
                         placeholder="Confirm Password"
                         onChange={this.handleChange}
                         />
+                        </div>
                         {this.renderError()}
                     </form>
                 </div>
