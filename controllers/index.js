@@ -1,6 +1,11 @@
+const bcrpt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+const { Cart, User, Category, Item, Review } = require('../models')
+
 const SALT_ROUNDS = 11
 const TOKEN_KEY = 'areallylonggoodkey'
-const { Cart, User, Category, Item, Review } = require('../models')
+
+
 const signUp = async (req, res) => {
     try {
         console.log(req.body)

@@ -4,27 +4,26 @@ import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
 import Items from '../screens/Items'
+import Item from '../screens/Item'
 import Login from '../screens/Login'
 import AuthenticatedRoute from './AuthenticatedRoute'
-const Routes = ({ setUser, clearUser }) => (
+const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
     <Switch>
         <Route
-        path="/sign-in"
-        render={props => <SignIn {...props} setUser={setUser} />}
+            exact
+            path="/"
+            render={props => (<SignIn />)}
         />
         <Route
-        path="/sign-up"
-        render={props => <SignUp {...props} setUser={setUser}/>}
-        />
-        <Route
-        exact
-        path="/sign-out"
-        render={props => <SignOut {...props} clearUser={clearUser}/>}
+            exact
+            path="/items/:id"
+            render={props => <Item {...props} />}
         />
         <AuthenticatedRoute
-        exact
-        path="/login"
-        render={ <Login /> } />
+            exact
+            path="/login"
+            render={props => <Login />}
+        />
 
     </Switch>
 )

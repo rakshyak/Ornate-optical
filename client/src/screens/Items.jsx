@@ -22,7 +22,7 @@ export default class Items extends Component {
     }
   }
   renderButton = id => {
-    if (this.props.user) {
+    if (this.state.items) {
       return (
         <button
           onClick={() =>
@@ -42,7 +42,7 @@ export default class Items extends Component {
       return this.state.items.map(item => {
         return (
           <div className="item" key={item.id}>
-            <h4>{item.title}</h4>
+            <h4>{item.name}</h4>
             {this.renderButton(item.id)}
           </div>
         )
@@ -54,11 +54,12 @@ export default class Items extends Component {
   render() {
     const { user } = this.props
     const { items } = this.state
+    console.log(items)
     if (user) {
       return (
         <Layout>
           <h4>Sunglasses</h4>
-          {!items.length ? <h3>No glasses at this time.</h3> : null}
+          {items.length ? <h3>No glasses at this time.</h3> : null}
           <div className="item-container">{this.renderItems()}</div>
         </Layout>
       )

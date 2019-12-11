@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Layout from '../components/shared/Layout'
-import { getItemById } from '../services/items'
+import Layout from '../shared/Layout'
+import { getItemById } from '../services/item'
 
 class Item extends Component {
   constructor(props) {
@@ -14,7 +14,9 @@ class Item extends Component {
 
   async componentDidMount() {
     try {
+      console.log(this.props)
       const item = await getItemById(this.props.match.params.id)
+      // const item = await getItemById(1)
       this.setState({ item })
     } catch (err) {
       console.error(err)
