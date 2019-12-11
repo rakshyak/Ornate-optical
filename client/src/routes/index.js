@@ -12,7 +12,7 @@ const Routes = ({ setUser, clearUser }) => (
         <Route
         exact
         path="/"
-        render={<Home />}
+        render={props => <Home />}
         />
         <Route
         path="/login"
