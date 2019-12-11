@@ -29,7 +29,7 @@ class SignUp extends Component {
 
         const { history, setUser } = this.props
 
-        signUp(this.state)
+        signUp(this.state, 1)
             .then(() => signInUser(this.state))
             .then(res => setUser(res.user))
             .then(() => history.push('/'))

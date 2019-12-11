@@ -5,12 +5,15 @@ import SignUp from './SignUp'
 import '../styles/login.css'
 
 class Login extends Component {
+    constructor(props) {
+        super(props)
+    }
     render () {
         return (
     <>
     <div className="login-bar">
-    <SignIn />
-    <SignUp />
+    <SignIn {...this.props} setUser={this.props.setUser}/>
+    <SignUp {...this.props} setUser={this.props.setUser}/>
     </div>
     </>
          )}

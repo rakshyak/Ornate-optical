@@ -10,10 +10,10 @@ const signUp = async (req, res) => {
         console.log(req.body)
         const { username, email, password } = req.body
         const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
-        const user = await user.create({
-            username,
-            email,
-            password_digest
+        const user = await User.create({
+            username: username,
+            email: email,
+            password : password_digest
         })
         const payload = {
             id: user.id,
@@ -39,7 +39,7 @@ const signIn = async (req, res) => {
                 username
             }
         })
-        if (await bcrypt.compare(password, user.dataValues.password_digest)) {
+        if (await bcrypt.compare(password, user.dataValues.password)) {
             const payload = {
                 id: user.id,
                 username: user.username,
