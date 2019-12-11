@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../shared/Navbar'
 import { NavLink } from 'react-router-dom'
-import Navbar from '../shared/Navbar'
 
 
 const authenticatedOptions = (
