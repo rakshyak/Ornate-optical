@@ -25,8 +25,11 @@ class SignIn extends Component {
         event.preventDefault()
 
         const { history, setUser } = this.props
-
-        signInUser(this.state)
+        const user = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        signInUser(user, 2)
             .then(res => setUser(res.user))
             .then(() => history.push('/'))
             .catch(error => {

@@ -1,12 +1,12 @@
 const { Router } = require('express')
 const controllers = require('../controllers')
 const router = Router()
-// const restrict = require('../helpers')
+const restrict = require('../helpers')
 
 router.get('/', (req,res) => res.send('This is root from routes!!'))
 
-router.post('/sign-up', controllers.signUp)
-router.post('/sign-in', controllers.signIn)
+router.post('/login/2', controllers.signIn)
+router.post('/login/1', controllers.signUp)
 
 router.post('/users', controllers.createUser)
 
