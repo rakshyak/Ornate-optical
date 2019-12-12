@@ -21,6 +21,9 @@ router.get('/items/:id', controllers.getItemById)
 router.put('/items/:id', controllers.updateItem)
 router.delete('/items/:id', controllers.deleteUser)
 
+router.get('/glasses-men', controllers.getItemsMen)
+router.get('/glasses-women', controllers.getItemsWomen)
+
 router.post('/items/:id', controllers.createReview)
 
 module.exports = router

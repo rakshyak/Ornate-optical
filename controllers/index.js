@@ -152,7 +152,7 @@ const createItem = async(req, res) => {
 const getAllItems = async(req, res) => {
     try {
         const items = await Item.findAll({
-            attributes: ['id', 'name', 'price', 'quantity'],
+            attributes: ['id', 'name', 'price', 'quantity', 'image'],
             include: [{
                     model: Review
                 },
@@ -167,8 +167,51 @@ const getAllItems = async(req, res) => {
     } catch (error) {
         return res.status(500).send(error.message)
     }
+}
+const getItemsWomen = async(req, res) => {
+    try {
+        const items = await Item.findAll({
+            attributes: ['id', 'name', 'price', 'quantity', 'image'],
+            include: [{
+                    model: Review
+                },
+                {
+                    model: Category,
+                    attributes: ['name']
+                }
+            ],
+            where: {
+                categoryId: 2
+            }
 
+        })
+        return res.status(200).json({ items })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
+const getItemsMen = async(req, res) => {
+    try {
+        const items = await Item.findAll({
+            attributes: ['id', 'name', 'price', 'quantity', 'image'],
+            include: [{
+                    model: Review
+                },
+                {
+                    model: Category,
+                    attributes: ['name']
+                }
+            ],
+            where: {
+                categoryId: 1
+            }
+
+        })
+        return res.status(200).json({ items })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
 }
 
 const getItemById = async(req, res) => {
@@ -256,6 +299,8 @@ module.exports = {
     getItemById,
     updateItem,
     deleteItem,
-    createReview
+    createReview,
+    getItemsMen,
+    getItemsWomen
 
 }
