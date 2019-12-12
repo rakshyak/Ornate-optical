@@ -5,7 +5,7 @@ module.exports = {
 
     return queryInterface.bulkInsert('Items', [
       {
-        name: 'glasses 1',
+        name: 'Armani Exchange AX3055',
         price: 189.99,
         quantity: 12,
         categoryId: 1,

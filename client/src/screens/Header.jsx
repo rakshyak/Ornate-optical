@@ -5,26 +5,28 @@ import { NavLink } from 'react-router-dom'
 
 const authenticatedOptions = (
     <div className="links">
-        <NavLink to="/sign-out">Sign Out</NavLink>
+        <NavLink className='logout' to="/sign-out">Log Out</NavLink>
     </div>
 )
 
 const unauthenticatedOptions = (
     <div className="links">
-        <NavLink to="/sign-up">Sign Up</NavLink>
-        <NavLink to="/sign-in">Sign In</NavLink>
     </div>
 )
 
 const alwaysOptions = (
     <div className="links">
-        <NavLink to="/">Ornate Optical</NavLink>
     </div>
 )
 
-const Header = () => (
-    <Navbar />
-
-)
+const Header = ({ user }) => (
+    <>
+      {user && <span className="navbar-text">Welcome, {user.email}</span>}
+      <div className="nav">
+        {alwaysOptions}
+        {user ? authenticatedOptions : unauthenticatedOptions}
+      </div>
+      </>
+  )
 
 export default Header

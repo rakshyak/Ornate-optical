@@ -12,9 +12,15 @@
     height: 500px;
     background-color: lightgrey;
 }
+.item:hover {
+    background-color: gray;
+}
 img {
 
     margin: 1em;
     height: 100%;
     width: 60%;
+}
+.red {
+    background-color: red;
 }

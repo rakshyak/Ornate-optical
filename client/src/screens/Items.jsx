@@ -8,7 +8,7 @@ export default class Items extends Component {
     super()
     this.state = {
       items: [],
-      image: ''
+      clicked: false
     }
     
   }
@@ -17,9 +17,16 @@ export default class Items extends Component {
     this.fetchItems()
   }
 
-  handleChange = () => {
-   this.renderItems()
-  }
+  // changeColor = () => {
+  //   this.setState({
+  //     clicked: true
+  //   })
+  // } 
+  // changeColorBack = () => {
+  //   this.setState({
+  //     clicked: false
+  //   })
+  // }
 
   fetchItems = async () => {
     try {
@@ -38,9 +45,9 @@ export default class Items extends Component {
           <div className="item" key={item.id}  onClick={() =>
             this.props.history.push(`${this.props.match.url}/${item.id}`)}>
             <h4>{item.name}</h4>
-            <>{this.image} </>
           </div>
-          <div onClick={this.handleChange}>click me </div>
+          {/* <div onClick={this.changeColor}>click me </div>
+          <div onClick={this.changeColorBack}>click me </div> */}
           </div>                                                  
         )
       })
