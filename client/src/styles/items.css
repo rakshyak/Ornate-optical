@@ -1,9 +1,14 @@
-.item-container{
+* {
+    border: 1px solid red;
+}
+
+.item-container {
     background-color: transparent;
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
 }
+
 .item {
     display: flex;
     flex-direction: column;
@@ -15,12 +20,25 @@
 .item:hover {
     background-color: gray;
 }
-img {
 
+.item-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-box .item-1 img {
+    height: 300px;
+    width: 300px;
+}
+
+img {
     margin: 1em;
     height: 100%;
     width: 60%;
+<<<<<<< HEAD
 }
 .red {
     background-color: red;
+=======
+>>>>>>> b578eae6074e056783631a7f5b545bd1650b7e87
 }

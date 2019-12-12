@@ -1,42 +1,53 @@
 import React, { Component } from 'react'
 import Layout from '../shared/Layout'
-import { getItems } from '../services/item'
+import { getItemsMen, getItemsWomen } from '../services/item'
 import '../styles/items.css'
 
 export default class Items extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       items: [],
       clicked: false
     }
-    
+
   }
-  
+
   async componentDidMount() {
     this.fetchItems()
   }
 
+  handleChange = () => {
+    this.renderItems()
+  }
+
   fetchItems = async () => {
     try {
-      const items = await getItems()
-      this.setState({ items })
+      if (this.props.match.path === "/glasses-women") {
+        const items = await getItemsWomen()
+        this.setState({ items })
+      } else if (this.props.match.path === "/glasses-men") {
+        const items = await getItemsMen()
+        this.setState({ items })
+      }
     } catch (err) {
       console.error(err)
     }
   }
-  
+
   renderItems = () => {
     if (this.state.items.length) {
       return this.state.items.map(item => {
         return (
-        <div className='item-box'>
-          <div className="item" key={item.id}  onClick={() =>
-            this.props.history.push(`${this.props.match.url}/${item.id}`)}>
-            <h4>{item.name}</h4>
-            <img src={`../../assets/${item.image}`}/>
+          <div className='item-box'>
+            <div className="item-1" key={item.id} onClick={() =>
+              this.props.history.push(`items/${item.id}`)}>
+              <h4>{item.name}</h4>
+              <h4>{item.price}</h4>
+              <img src={`https://ornate-optical.s3.us-east-2.amazonaws.com/${item.image}`} alt=""/>
+            </div>
+            <div onClick={this.handleChange}>click me </div>
           </div>
-          </div>                                                  
         )
       })
     } else {
@@ -47,21 +58,20 @@ export default class Items extends Component {
   render() {
     const { user } = this.props
     const { items } = this.state
-    console.log(items)
     if (!user) {
       return (
-        <Layout>
+        <>
           {!items.length ? <h3>No glasses at this time.</h3> : null}
-          <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'/>{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'/>{this.renderItems()}
+          <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}
           </div>
-        </Layout>
+        </>
       )
     } else {
       return (
         <div className="landing">
           <div className="main">
             {!this.state.items.length ? <h3>No glasses at this time.</h3> : null}
-            <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'/>{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'/>{this.renderItems()}</div>
+            <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}</div>
           </div>
         </div>
       )
