@@ -1,41 +1,64 @@
-footer {
-    justify-content: space-evenly;
+footer {   
     display: flex;
     font-family: 'Bebas Neue', cursive;
+
 }
 footer .customer-footer {
-    display: flex;
     flex-direction: column;
+    margin-left: 40px;
 }
 footer .customer-footer h3 {
     font-size: 26px;
+    letter-spacing: 1.5px;
 }
 footer .customer-footer ul {
     list-style-type: none;
     font-size: 22px;
     padding-inline-start: 0;
+    letter-spacing: 1.2px;
+}
+footer .customer-footer .shipping-bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+footer .customer-footer .order-bar {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 footer .s-ability-footer {
-    display: flex;
     flex-direction: column;
+    margin-left: 15.8em;
+    margin-right: 15em;
+
 }
 footer .s-ability-footer h3 {
     font-size: 26px;
+    letter-spacing: 1.5px;
 }
 footer .s-ability-footer ul {
     list-style-type: none;
     font-size: 22px;
     padding-inline-start: 0;
+    letter-spacing: 1px;
+}
+footer .s-ability-footer .prd-bar {
+    margin-top: 10px;
 }
 footer .follow-bar {
-    display: flex;
     flex-direction: column;
+    margin-left: 30em;
 }
 footer .follow-bar h3 {
     font-size: 26px;
+    letter-spacing: 1.5px;
 }
 footer .follow-bar ul {
     list-style-type: none;
     font-size: 22px;
     padding-inline-start: 0;
+    letter-spacing: 1px;
+}
+footer .follow-bar .fbk-bar {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

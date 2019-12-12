@@ -1,0 +1,118 @@
+.bottom-bar {
+    display: flex;
+    font-family: 'Bebas Neue', cursive;
+}
+.bottom-bar h3 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+}
+.bottom-bar p {
+    margin: 20px 60px;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: .5px;
+    margin-bottom: 100px;
+    
+}
+.location-bar {
+    display: flex;
+    background-color: #E2E2E2;
+    height: 35em;
+    margin-bottom: 40px;
+}
+.hero-container .img-hero .bottom-centered {
+    position: absolute;
+    bottom: 20px;
+    left: 20%;
+}
+.hero-container .img-hero .bottom-centered h2 {
+    font-family: 'Bebas Neue', cursive;
+    letter-spacing: 1.5px;
+    font-size: 35px;
+    text-align: center;
+    margin: 0;
+}
+.hero-container .img-hero .bottom-centered button {
+    border: black;
+    margin-right: 4em;
+    margin-left: 5em;
+    
+}
+.hero-container .img-hero img {
+    border-radius: 15px;
+    width: 90%;
+    margin-left: 5%;
+}
+.bsellers-container {
+    display: flex;
+    margin-top: 80px;
+    margin-left: 10.5em;
+}
+.bsellers-container .bseller1 img {
+    height: 150px;
+} 
+.bsellers-container .bseller2 img {
+    height: 150px;
+} 
+.bsellers-container .bseller3 img {
+    height: 150px;
+} 
+.bsellers-container .bseller4 img {
+    height: 150px;
+} 
+
+.bseller-header h2 {
+    font-family: 'Bebas Neue', cursive;
+    margin: 20px;
+    text-align: center;
+    letter-spacing: 1.5px;
+    font-size: 30px;
+}
+.bsellers-container .bseller1 {
+    margin-bottom: 6em;
+}
+.location-bar .img {
+    display: flex;
+}
+.location-bar .img img {
+    border-radius: 16px;
+    height: 30em;
+    width: 50em;
+    margin-top: 38px;
+    margin-left: 30px;
+}
+.location-bar .location-details {
+    font-family: 'Bebas Neue', cursive;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-left: 14em;
+}
+.location-bar .location-details h2 {
+    font-size: 35px;
+    letter-spacing: 1.7px;
+}
+.location-bar .location-details p {
+    font-size: 22px;
+    letter-spacing: .7px;
+}
+.home-container .location-bar {
+    display:flex;  
+}
+
+.location-bar .location-details .button-bar button {
+    background-color: #E2E2E2;
+    color: black;
+    border-color: black;
+    border-width: 3px;
+    font-weight: 550;
+}
+
+
+
+
+
+
