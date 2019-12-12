@@ -23,6 +23,16 @@ const Routes = ({ setUser, clearUser }) => (
         path="/sign-out"
         render={props => <SignOut {...props} clearUser={clearUser}/>}
         />
+        <Route 
+        exact
+        path = "/glasses-men"
+        render={props => <Items {...props}/> }
+        />
+        <Route 
+        exact 
+        path = "/glasses-women"
+        render={props => <Items {...props}/>}
+        />
         
     </Switch>
 )
