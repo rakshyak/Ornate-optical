@@ -44,28 +44,34 @@
     border-radius: 15px;
     width: 90%;
     margin-left: 5%;
+    margin-bottom: 70px;
 }
 .bsellers-container {
     display: flex;
     margin-top: 80px;
-    margin-left: 10.5em;
+    margin-left: 6.8em;
 }
 .bsellers-container .bseller1 img {
     height: 150px;
+    width: 70%;
 } 
 .bsellers-container .bseller2 img {
     height: 150px;
+    width: 70%;
 } 
 .bsellers-container .bseller3 img {
     height: 150px;
+    width: 70%;
 } 
 .bsellers-container .bseller4 img {
     height: 150px;
+    width: 70%;
 } 
 
 .bseller-header h2 {
     font-family: 'Bebas Neue', cursive;
     margin: 20px;
+    margin-top: 80px;
     text-align: center;
     letter-spacing: 1.5px;
     font-size: 30px;
