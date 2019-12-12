@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../shared/Layout'
 import { getItems } from '../services/item'
-import './Items.css'
+import '../styles/items.css'
 
 export default class Items extends Component {
   constructor() {

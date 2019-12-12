@@ -4,7 +4,7 @@ import '../styles/nav.css'
 
 const Nav = () => (
 	<nav>
-        <NavLink to="/">ORNATE OPTICAL</NavLink>
+        <NavLink className="title" to="/">ORNATE OPTICAL</NavLink>
         <ul className="main-bar">
         <NavLink to='/glasses-women'>WOMEN</NavLink>
         <NavLink to='/glasses-men'>MEN</NavLink>

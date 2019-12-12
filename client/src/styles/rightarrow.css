@@ -1,0 +1,11 @@
+.nextArrow {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border: solid black;
+    border-width: 0 4px 4px 0;
+    padding: 4px;
+    transform: rotate(-45deg);
+    transition: transform ease-in .1s;
+    margin-left: 90em;
+  }

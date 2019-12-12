@@ -7,7 +7,7 @@ a {
    text-decoration: none;
    color: black;
 }
-a.active {
+a.title.active {
     text-decoration: none;
     letter-spacing: 1.3px;
     margin: 20px;
@@ -20,8 +20,8 @@ nav .main-bar {
     font-size: 28px;
     list-style-type: none;
     display: flex;  
-    /* padding-inline-start: 0;  */
     letter-spacing: 1px;
+    margin-left: 4em;
 }
 nav .main-bar li {
     margin: 0px 4.4em;
@@ -32,9 +32,10 @@ nav .login-bar {
     list-style-type: none;
     display: flex;
     letter-spacing: .7px;
+    margin-left: 3em;
 }
 
 nav .login-bar li {
-    margin: 0px 2em;
+    margin: 0px 3em;
 }
 
