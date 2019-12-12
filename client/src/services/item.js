@@ -22,6 +22,7 @@ export const getItemsWomen = async() => {
         const resp = await api.get('/glasses-women')
         return resp.data.items
     } catch (error) {
+        console.log('it failes in auth/item')
         throw error
     }
 }

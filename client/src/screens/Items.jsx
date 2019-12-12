@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Layout from '../shared/Layout'
 import { getItemsMen, getItemsWomen } from '../services/item'
-import './Items.css'
+import '../styles/items.css'
 
 export default class Items extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ export default class Items extends Component {
 
   }
 
-  async componentDidUpdate() {
+  async componentDidMount() {
     this.fetchItems()
   }
 
@@ -40,10 +40,11 @@ export default class Items extends Component {
       return this.state.items.map(item => {
         return (
           <div className='item-box'>
-            <div className="item" key={item.id} onClick={() =>
+            <div className="item-1" key={item.id} onClick={() =>
               this.props.history.push(`items/${item.id}`)}>
               <h4>{item.name}</h4>
-              <>{this.image} </>
+              <h4>{item.price}</h4>
+              <img src={`https://ornate-optical.s3.us-east-2.amazonaws.com/${item.image}`} alt=""/>
             </div>
             <div onClick={this.handleChange}>click me </div>
           </div>

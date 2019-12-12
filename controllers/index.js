@@ -181,7 +181,7 @@ const getItemsWomen = async(req, res) => {
                 }
             ],
             where: {
-                caregoryId: 2
+                categoryId: 2
             }
 
         })

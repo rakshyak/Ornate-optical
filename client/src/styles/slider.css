@@ -1,0 +1,33 @@
+.slider{
+    width: 1300px;
+    height: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.slider .slider-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slider .slider-wrapper .slide {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.slider .left-arrow {
+   display: flex;
+   position: absolute;
+   top: 160%;
+}
+.slider .right-arrow {   
+   display: flex;
+   position: absolute;
+   top: 160%;
+}
+
