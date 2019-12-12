@@ -39,7 +39,7 @@ module.exports = {
                 name: 'glasses 5',
                 price: 389.99,
                 quantity: 12,
-                categoryId: 1,
+                categoryId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             },
@@ -47,7 +47,7 @@ module.exports = {
                 name: 'glasses 6',
                 price: 289.99,
                 quantity: 12,
-                categoryId: 1,
+                categoryId: 2,
                 createdAt: new Date(),
                 updatedAt: new Date()
             }
