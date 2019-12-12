@@ -1,26 +1,22 @@
 'use strict'
 module.exports = (sequelize, DataTypes) => {
-  const User = sequelize.define(
-    'User',
-    {
-      firstName: DataTypes.STRING,
-      lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
-      password: DataTypes.STRING,
-      address: DataTypes.STRING,
-      username: DataTypes.STRING
-    },
-    {}
-    
-  )
+    const User = sequelize.define(
+        'User', {
+            firstName: DataTypes.STRING,
+            lastName: DataTypes.STRING,
+            email: DataTypes.STRING,
+            password: DataTypes.STRING
+        }, {}
 
-  User.associate = function(models) {
-    User.hasMany(models.Cart, {
-      foreignKey: 'userId'
-    })
-    User.hasMany(models.Review, {
-      foreignKey: 'userId'
-    })
-  }
-  return User
+    )
+
+    User.associate = function(models) {
+        User.hasMany(models.Cart, {
+            foreignKey: 'userId'
+        })
+        User.hasMany(models.Review, {
+            foreignKey: 'userId'
+        })
+    }
+    return User
 }
