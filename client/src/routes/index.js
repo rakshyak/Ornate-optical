@@ -5,24 +5,34 @@ import SignOut from '../screens/SignOut'
 import SignUp from '../screens/SignUp'
 import Home from '../screens/Home'
 import Items from '../screens/Items'
+import Item from '../screens/Item'
 import Login from '../screens/Login'
 import AuthenticatedRoute from './AuthenticatedRoute'
-const Routes = ({ setUser, clearUser }) => (
+const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
     <Switch>
         <Route
-        exact
-        path="/"
-        render={props => <Home />}
+            exact
+            path="/"
+            render={props => <Home />}
         />
         <Route
-        path="/login"
-        render={props => <Login {...props} setUser={setUser} />}
+            path="/login"
+            render={props => <Login {...props} setUser={setUser} />}
         />
         <Route
-        exact
-        path="/sign-out"
-        render={props => <SignOut {...props} clearUser={clearUser}/>}
+            exact
+            path="/sign-out"
+            render={props => <SignOut {...props} clearUser={clearUser} />}
         />
+<<<<<<< HEAD
+        <Route
+            exact
+            path="/items/:id"
+            render={props => <Item {...props} user={user} getItem={getItem} />}
+        />
+
+
+=======
         <Route 
         exact
         path = "/glasses-men"
@@ -34,6 +44,7 @@ const Routes = ({ setUser, clearUser }) => (
         render={props => <Items {...props}/>}
         />
         
+>>>>>>> 5f7892b7f74d016a030c444ba67623afcd1089bd
     </Switch>
 )
 

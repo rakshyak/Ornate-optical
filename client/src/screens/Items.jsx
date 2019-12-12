@@ -52,7 +52,8 @@ export default class Items extends Component {
   render() {
     const { user } = this.props
     const { items } = this.state
-    if (user) {
+    console.log(items)
+    if (!user) {
       return (
         <Layout>
           {!items.length ? <h3>No glasses at this time.</h3> : null}

@@ -3,7 +3,7 @@ const controllers = require('../controllers')
 const router = Router()
 const restrict = require('../helpers')
 
-router.get('/', (req,res) => res.send('This is root from routes!!'))
+router.get('/', (req, res) => res.send('This is root from routes!!'))
 
 router.post('/login/2', controllers.signIn)
 router.post('/login/1', controllers.signUp)
@@ -20,5 +20,7 @@ router.get('/items', controllers.getAllItems)
 router.get('/items/:id', controllers.getItemById)
 router.put('/items/:id', controllers.updateItem)
 router.delete('/items/:id', controllers.deleteUser)
+
+router.post('/items/:id', controllers.createReview)
 
 module.exports = router
