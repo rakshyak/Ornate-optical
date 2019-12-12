@@ -58,7 +58,7 @@ export default class Items extends Component {
     const { user } = this.props
     const { items } = this.state
     console.log(items)
-    if (user) {
+    if (!user) {
       return (
         <Layout>
           <h4>glasses</h4>

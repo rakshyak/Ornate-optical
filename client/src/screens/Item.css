@@ -1,0 +1,25 @@
+* {
+    border: 1px solid red;
+}
+
+.item-details {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 20px;
+}
+
+.image-carosel {
+    flex: 1 0;
+    min-width: 300px;
+    min-height: 453px;
+}
+
+.image-carosel img {
+    width: 100%;
+    margin: 0;
+}
+
+.item-container {
+    margin: 0 10px;
+    flex: 1;
+}

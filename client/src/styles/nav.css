@@ -2,18 +2,26 @@ nav {
     font-family: 'Bebas Neue', cursive;
     display: flex;
 }
-a {
-    text-decoration: none;
-    margin: 20px;
-    font-size: 36px;
-    color: black;
-    display: flex;  
+a { 
+   margin-left: 5em;   
+   text-decoration: none;
+   color: black;
 }
+a.active {
+    text-decoration: none;
+    letter-spacing: 1.3px;
+    margin: 20px;
+    font-size: 40px;
+    color: black;
+    display: flex;
+}
+
 nav .main-bar {
     font-size: 28px;
     list-style-type: none;
     display: flex;  
-    padding-inline-start: 0; 
+    /* padding-inline-start: 0;  */
+    letter-spacing: 1px;
 }
 nav .main-bar li {
     margin: 0px 4.4em;
@@ -23,6 +31,7 @@ nav .login-bar {
     font-size: 26px;
     list-style-type: none;
     display: flex;
+    letter-spacing: .7px;
 }
 
 nav .login-bar li {

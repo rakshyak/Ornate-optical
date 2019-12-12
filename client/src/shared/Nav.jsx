@@ -6,8 +6,8 @@ const Nav = () => (
         <nav>
                 <NavLink to="/">ORNATE OPTICAL</NavLink>
                 <ul className="main-bar">
-                        <li>MEN</li>
                         <li>WOMEN</li>
+                        <li>MEN</li>
                         <li>SERVICES</li>
                 </ul>
                 <ul className="login-bar">
