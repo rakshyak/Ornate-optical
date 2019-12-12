@@ -17,17 +17,6 @@ export default class Items extends Component {
     this.fetchItems()
   }
 
-  // changeColor = () => {
-  //   this.setState({
-  //     clicked: true
-  //   })
-  // } 
-  // changeColorBack = () => {
-  //   this.setState({
-  //     clicked: false
-  //   })
-  // }
-
   fetchItems = async () => {
     try {
       const items = await getItems()
@@ -45,9 +34,8 @@ export default class Items extends Component {
           <div className="item" key={item.id}  onClick={() =>
             this.props.history.push(`${this.props.match.url}/${item.id}`)}>
             <h4>{item.name}</h4>
+            <img src={`../../assets/${item.image}`}/>
           </div>
-          {/* <div onClick={this.changeColor}>click me </div>
-          <div onClick={this.changeColorBack}>click me </div> */}
           </div>                                                  
         )
       })
@@ -59,7 +47,8 @@ export default class Items extends Component {
   render() {
     const { user } = this.props
     const { items } = this.state
-    if (user) {
+    console.log(items)
+    if (!user) {
       return (
         <Layout>
           {!items.length ? <h3>No glasses at this time.</h3> : null}

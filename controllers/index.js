@@ -5,7 +5,7 @@ const TOKEN_KEY = 'areallylonggoodkey'
 const { Cart, User, Category, Item, Review } = require('../models')
 
 
-const signUp = async (req, res) => {
+const signUp = async(req, res) => {
     try {
         console.log(req.body)
         const { username, email, password } = req.body
@@ -13,7 +13,7 @@ const signUp = async (req, res) => {
         const user = await User.create({
             username: username,
             email: email,
-            password : password_digest
+            password: password_digest
         })
         const payload = {
             id: user.id,
@@ -30,7 +30,7 @@ const signUp = async (req, res) => {
     }
 }
 
-const signIn = async (req, res) => {
+const signIn = async(req, res) => {
     try {
         console.log(req.body)
         const { username, password } = req.body
@@ -54,7 +54,7 @@ const signIn = async (req, res) => {
         return res.status(500).json({ error: error.message })
     }
 }
-const createUser = async (req, res) => {
+const createUser = async(req, res) => {
     try {
         const user = await User.create(req.body);
         return res.status(201).json({
@@ -65,11 +65,10 @@ const createUser = async (req, res) => {
     }
 }
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async(req, res) => {
     try {
         const users = await User.findAll({
-            include: [
-                {
+            include: [{
                     model: Cart
                 },
                 { model: Review }
@@ -81,13 +80,12 @@ const getAllUsers = async (req, res) => {
     }
 }
 
-const getUserById = async (req, res) => {
+const getUserById = async(req, res) => {
     console.log('start')
     try {
         const { id } = req.params;
         const user = await User.findOne({
-            include: [
-                {
+            include: [{
                     model: Cart
                 },
                 { model: Review }
@@ -104,7 +102,7 @@ const getUserById = async (req, res) => {
     }
 }
 
-const updateUser = async (req, res) => {
+const updateUser = async(req, res) => {
     try {
         const { id } = req.params;
         const [updated] = await User.update(req.body, {
@@ -120,7 +118,7 @@ const updateUser = async (req, res) => {
     }
 }
 
-const deleteUser = async (req, res) => {
+const deleteUser = async(req, res) => {
     try {
         const { id } = req.params;
         const deleted = await User.destroy({
@@ -135,7 +133,7 @@ const deleteUser = async (req, res) => {
     }
 }
 
-const createItem = async (req, res) => {
+const createItem = async(req, res) => {
     try {
         console.log('req.body:', req.body)
         const createdItem = await Item.create(req.body)
@@ -151,12 +149,11 @@ const createItem = async (req, res) => {
     }
 }
 
-const getAllItems = async (req, res) => {
+const getAllItems = async(req, res) => {
     try {
-        const items = await Item.findAll( {
-            attributes: ['id', 'name', 'price', 'quantity'],
-            include: [
-                {
+        const items = await Item.findAll({
+            attributes: ['id', 'name', 'price', 'quantity', 'images'],
+            include: [{
                     model: Review
                 },
                 {
@@ -171,16 +168,15 @@ const getAllItems = async (req, res) => {
         return res.status(500).send(error.message)
     }
 
-    
+
 }
 
-const getItemById = async (req, res) => {
+const getItemById = async(req, res) => {
     try {
         const { id } = req.params
         const item = await Item.findOne({
-            attributes: ['id', 'name', 'price', 'quantity'],
-            include: [
-                {
+            attributes: ['id', 'name', 'price', 'quantity', 'image'],
+            include: [{
                     model: Review
                 },
                 {
@@ -199,7 +195,7 @@ const getItemById = async (req, res) => {
     }
 }
 
-const updateItem = async (req, res) => {
+const updateItem = async(req, res) => {
     try {
         const { id } = req.params
         const { item } = req.body
@@ -211,12 +207,12 @@ const updateItem = async (req, res) => {
             return res.status(202).json({ item: updatedItem })
         }
         throw new Error('Item not found')
-    } catch(error) {
+    } catch (error) {
         return res.status(500).send(error.message)
     }
 }
 
-const deleteItem = async (req, res) => {
+const deleteItem = async(req, res) => {
     try {
         const { id } = req.params
         const deleted = await Item.destroy({
@@ -226,10 +222,26 @@ const deleteItem = async (req, res) => {
             return res.status(202).send('Item deleted')
         }
         throw new Error('Item not found')
-    } catch(error) {
+    } catch (error) {
         return res.status(500).send(error.message)
     }
 }
+const createReview = async(req, res) => {
+    try {
+        const { id } = req.params
+        const created = await Review.create(req.body, {
+            where: { id: id }
+        })
+        return res.status(201).json({
+            review: {
+                created
+            }
+        })
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 
 module.exports = {
     signIn,
@@ -243,6 +255,7 @@ module.exports = {
     getAllItems,
     getItemById,
     updateItem,
-    deleteItem
+    deleteItem,
+    createReview
 
 }

@@ -1,0 +1,111 @@
+* {
+    font-family: "Bebas Neue", cursive;
+}
+
+.item-top {
+    display: flex;
+    justify-content: space-around;
+    margin: 0 20px;
+}
+
+.image-carosel {
+    flex: 1;
+    min-width: 300px;
+    min-height: 453px;
+    max-width: 600px;
+    max-height: 906px;
+}
+
+.image-carosel img {
+    width: 100%;
+    margin: 0;
+}
+
+.item-container {
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    justify-content: center;
+    align-content: center;
+    flex: 1;
+}
+
+.bottom-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 0;
+}
+
+.bottom-hero * {
+    width: 80%;
+    margin: 10px;
+    text-align: center;
+}
+
+.review-form {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+.item-description {
+    width: 470px;
+}
+
+
+/* star rating */
+
+.star-rating {
+    float: left;
+}
+
+.star-rating:not(:checked)>input {
+    position: absolute;
+    top: -9999px;
+    clip: rect(0, 0, 0, 0);
+}
+
+.star-rating:not(:checked)>label {
+    float: right;
+    width: 1em;
+    padding: 0 .1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 100%;
+    line-height: 1.2;
+    color: #ddd;
+    text-shadow: 1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0, 0, 0, .5);
+}
+
+.star-rating:not(:checked)>label:before {
+    content: '★ ';
+}
+
+.star-rating>input:checked~label {
+    color: #f70;
+    text-shadow: 1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0, 0, 0, .5);
+}
+
+.star-rating:not(:checked)>label:hover,
+.star-rating:not(:checked)>label:hover~label {
+    color: gold;
+    text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+}
+
+.star-rating>input:checked+label:hover,
+.star-rating>input:checked+label:hover~label,
+.star-rating>input:checked~label:hover,
+.star-rating>input:checked~label:hover~label,
+.star-rating>label:hover~input:checked~label {
+    color: #ea0;
+    text-shadow: 1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0, 0, 0, .5);
+}
+
+.star-rating>label:active {
+    position: relative;
+    top: 2px;
+    left: 2px;
+}

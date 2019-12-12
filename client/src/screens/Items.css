@@ -10,7 +10,7 @@
     margin: 1em;
     width: 250px;
     height: 500px;
-    background-color: lightgrey;
+    border: solid black 2px;
 }
 .item:hover {
     background-color: gray;
