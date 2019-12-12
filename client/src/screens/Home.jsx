@@ -1,4 +1,5 @@
 import React from 'react'
+import Slider from '../components/Slider'
 import '../styles/home.css'
 
 const Home = () => (
@@ -16,6 +17,7 @@ const Home = () => (
                 </div>
             </div>
         </div>
+            <Slider />
         <div className="bseller-header">
             <h2>BESTSELLERS</h2>
             </div>
