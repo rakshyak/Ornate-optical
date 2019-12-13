@@ -24,12 +24,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/sign-out"
             render={props => <SignOut {...props} clearUser={clearUser} />}
         />
-<<<<<<< HEAD
-        <Route 
-        exact
-        path = "/glasses-men"
-        render={props => <Items {...props}/> }
-=======
 
         <Route
             exact
@@ -46,7 +40,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             exact
             path="/glasses-women"
             render={props => <Items {...props} />}
->>>>>>> b578eae6074e056783631a7f5b545bd1650b7e87
         />
         <AuthenticatedRoute
             exact
@@ -54,12 +47,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/users/:id/cart"
             render={props => <Items {...props} />}
         />
-<<<<<<< HEAD
-        
-=======
-
-
->>>>>>> b578eae6074e056783631a7f5b545bd1650b7e87
     </Switch>
 )
 

@@ -109,3 +109,10 @@
     top: 2px;
     left: 2px;
 }
+.del-wrap{
+    height: 20px;
+    width: 20px;
+    border: red solid 2px;
+    text-align: center;
+
+}

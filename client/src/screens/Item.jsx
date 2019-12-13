@@ -10,7 +10,7 @@ class Item extends Component {
     this.state = {
       item: null,
       displayReview: false,
-      userReview: ''
+      userReview: []
     }
   }
 
@@ -42,8 +42,8 @@ class Item extends Component {
     }
     const { history, setItem } = this.props
     setReview(id, review)
-    .then(res => setItem(res.review))
-    .then()
+      .then(res => setItem(res.review))
+      .then()
       .catch(console.error)
   }
   reviewForm = () => {
@@ -77,24 +77,33 @@ class Item extends Component {
   }
   handleChange = event => {
     this.setState({
-        [event.target.name]: event.target.value,
-        isError: false,
-        errorMsg: ''
+      [event.target.name]: event.target.value,
+      isError: false,
+      errorMsg: ''
     })
-}
+  }
+
+  triggerDelete(review) {
+    // let revs = [...this.state.userReview]
+    const userReview = this.state.userReview.filter(i => i.id !== review.id)
+    this.setState({userReview})
+  }
   renderReviews = () => {
     const { Reviews } = this.state.item
-    return Reviews.map((review, input) => {
+    return Reviews.map((review, index) => {
       return (
-        <div className="ratingList" key={input}>
+        <div className="ratingList" key={index}>
           <div className="review">
             {this.showStar(review.rating)}
+            <div className='del-wrap' onClick={this.triggerDelete.bind(this, review)}>x</div>
             <p>{review.review}</p>
           </div>
         </div>
       )
     })
   }
+
+
   showStar = (n) => {
     let stars = []
     let i = 0;
@@ -109,7 +118,7 @@ class Item extends Component {
 
   render() {
     const { item } = this.state
-    console.log('state here',this.state)
+    console.log('state here', this.state)
     if (!item) {
       return <p>SORRY ITEM IS OUT OF STOCK</p>
     }
@@ -127,7 +136,7 @@ class Item extends Component {
                 <p><strong>USD</strong>: ${item.price}</p>
                 <p>item.description -- need to add to DB</p>
                 <p>{item.quantity} left</p>
-                <img src={item.image} alt=""/>
+                <img src={item.image} alt="" />
                 <div className="item-colors">
                   <p>COLOR</p>
                 </div>

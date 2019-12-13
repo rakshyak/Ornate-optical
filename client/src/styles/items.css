@@ -1,5 +1,5 @@
 * {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .item-container {
@@ -8,7 +8,6 @@
     flex-wrap: wrap;
     width: 100vw;
 }
-
 .item {
     display: flex;
     flex-direction: column;
@@ -35,10 +34,4 @@ img {
     margin: 1em;
     height: 100%;
     width: 60%;
-<<<<<<< HEAD
-}
-.red {
-    background-color: red;
-=======
->>>>>>> b578eae6074e056783631a7f5b545bd1650b7e87
 }
