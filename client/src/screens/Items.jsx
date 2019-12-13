@@ -16,8 +16,8 @@ export default class Items extends Component {
     this.fetchItems()
   }
 
-  handleChange = () => {
-    this.renderItems()
+  handleChange = (id) => {
+    this.props.history.push(`/items/${id}`)
   }
 
   fetchItems = async () => {
@@ -38,19 +38,21 @@ export default class Items extends Component {
     if (this.state.items.length) {
       return this.state.items.map(item => {
         return (
-          <div className='items-box'>
+          <div className='items-box' onClick={() =>
+            this.props.history.push(`items/${item.id}`)}>
             <div className="items-image">
               <img src={`https://ornate-optical.s3.us-east-2.amazonaws.com/${item.image}`} alt=""/>
             </div>
-            <div className="items-id" key={item.id} onClick={() =>
-              this.props.history.push(`items/${item.id}`)}>
+            <div className="desc-cont">
+            <div className="items-id" key={item.id}>
                 </div>
-            <div className="details" onClick={this.handleChange}>MORE DETAILS</div>
+            <div className="details">MORE DETAILS</div>
                 <div className="items-name">
               <h4>{item.name}</h4>
               </div>
               <div className="items-price">
-              <h4>{item.price}</h4>
+              <h4>${item.price}</h4>
+              </div>
               </div>
           </div>
         )
