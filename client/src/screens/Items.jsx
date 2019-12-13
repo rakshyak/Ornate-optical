@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { getItemsMen, getItemsWomen } from '../services/item'
 import '../styles/items.css'
+import { Redirect } from 'react-router-dom'
 
 export default class Items extends Component {
   constructor(props) {
     super(props)
     this.state = {
       items: [],
-      image: ''
+      image: '',
+      changed: false
     }
 
   }
@@ -65,6 +67,9 @@ export default class Items extends Component {
   render() {
     const { user } = this.props
     const { items } = this.state
+    if (this.state.changed) {
+      return <Redirect to={this.props.match.path} />
+    }
     if (!user) {
       return (
         <>

@@ -9,7 +9,8 @@ class Item extends Component {
     this.state = {
       item: null,
       displayReview: false,
-      userReview: ''
+      userReview: '',
+      displayEdit: false
     }
   }
 
@@ -28,6 +29,11 @@ class Item extends Component {
       displayReview: !state.displayReview
     }))
   }
+  toggleEditReviewForm = () => {
+    this.setState(state => ({
+      displayEdit: !state.displayEdit
+    }))
+  }
   onAddReview = (event) => {
     event.preventDefault();
     const { id } = this.state.item
@@ -43,6 +49,23 @@ class Item extends Component {
     setReview(id, review)
     .then(res => setItem(res.review))
     .then()
+      .catch(console.error)
+  }
+  onEditReview = (event) => {
+    event.preventDefault();
+    const { id } = this.state.item.Reviews
+    console.log(this.state)
+    console.log(event.target.rating.value)
+    const review = {
+      rating: event.target.rating.value,
+      review: this.state.userReview,
+      itemId: id,
+      userId: null
+    }
+    const { history, setItem } = this.props
+    setReview(id, review)
+      .then(res => setItem(res.review))
+      .then()
       .catch(console.error)
   }
   reviewForm = () => {
@@ -81,16 +104,50 @@ class Item extends Component {
         errorMsg: ''
     })
 }
+
+editReviewForm = async () => {
+  while (this.state.displayEdit) {
+    const { comment } = this.state
+    return (
+      <form onSubmit={(e) => { this.onEditReview(e) }}>
+        <div className="review-form">
+          <div className="star-rating">
+            <legend>Please rate:</legend>
+            <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+          </div>
+          <label>HAVE IT? WRITE A REVIEW.</label>
+          <input
+            required
+            type="textarea"
+            name="userReview"
+            value={comment}
+            placeholder={'hi'}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    )
+  }
+}
   renderReviews = () => {
     const { Reviews } = this.state.item
     return Reviews.map((review, input) => {
       return (
+        <>
         <div className="ratingList" key={input}>
           <div className="review">
             {this.showStar(review.rating)}
             <p>{review.review}</p>
+            {this.editReviewForm}
+
           </div>
         </div>
+        </>
       )
     })
   }

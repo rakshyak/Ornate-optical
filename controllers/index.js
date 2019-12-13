@@ -7,8 +7,9 @@ const { Cart, User, Category, Item, Review } = require('../models')
 
 const signUp = async(req, res) => {
     try {
-        console.log(req.body)
+
         const { username, email, password } = req.body
+        console.log('body', username, email, password)
         const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
         const user = await User.create({
             username: username,
@@ -284,6 +285,21 @@ const createReview = async(req, res) => {
         return res.status(500).send(error.message)
     }
 }
+const updateReview = async(req, res) => {
+    try {
+        const { id, ...review } = req.body
+        const [updated] = await Review.update(review, {
+            where: { id: id }
+        })
+        if (updated) {
+            const updatedReview = await Review.findOne({ where: { id: id } })
+            return res.status(202).json({ item: updatedItem })
+        }
+        throw new Error('Review not found')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
 
 module.exports = {
@@ -301,6 +317,7 @@ module.exports = {
     deleteItem,
     createReview,
     getItemsMen,
-    getItemsWomen
+    getItemsWomen,
+    updateReview
 
 }

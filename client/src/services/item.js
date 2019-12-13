@@ -52,3 +52,12 @@ export const setReview = async(id, review) => {
         throw error
     }
 }
+
+export const updateReview = async(id, review) => {
+    try {
+        const resp = await api.put(`/reviews/${id}`, review)
+        return resp
+    } catch (error) {
+        throw error
+    }
+}
