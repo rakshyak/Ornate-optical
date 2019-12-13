@@ -1,9 +1,14 @@
-.item-container{
+* {
+    border: 1px solid red;
+}
+
+.item-container {
     background-color: transparent;
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
 }
+
 .item {
     display: flex;
     flex-direction: column;
@@ -12,8 +17,18 @@
     height: 500px;
     background-color: lightgrey;
 }
-img {
 
+.item-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-box .item-1 img {
+    height: 300px;
+    width: 300px;
+}
+
+img {
     margin: 1em;
     height: 100%;
     width: 60%;

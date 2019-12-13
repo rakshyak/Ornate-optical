@@ -24,17 +24,29 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/sign-out"
             render={props => <SignOut {...props} clearUser={clearUser} />}
         />
-        <Route 
-        exact
-        path = "/glasses-men"
-        render={props => <Items {...props}/> }
+        <Route
+            exact
+            path="/items/:id"
+            render={props => <Item {...props} user={user} getItem={getItem} />}
         />
-        <Route 
-        exact 
-        path = "/glasses-women"
-        render={props => <Items {...props}/>}
+
+        <Route
+            exact
+            path="/glasses-men"
+            render={props => <Items {...props} />}
         />
-        
+        <Route
+            exact
+            path="/glasses-women"
+            render={props => <Items {...props} />}
+        />
+        <AuthenticatedRoute
+            exact
+            user={user}
+            path="/users/:id/cart"
+            render={props => <Items {...props} />}
+        />
+
     </Switch>
 )
 
