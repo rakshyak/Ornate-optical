@@ -24,7 +24,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/sign-out"
             render={props => <SignOut {...props} clearUser={clearUser} />}
         />
-
         <Route
             exact
             path="/items/:id"
@@ -47,7 +46,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/users/:id/cart"
             render={props => <Items {...props} />}
         />
-
 
     </Switch>
 )
