@@ -1,5 +1,6 @@
 import React from 'react'
 import Slider from '../components/Slider'
+import { NavLink } from 'react-router-dom'
 import '../styles/home.css'
 
 const Home = () => (
@@ -12,8 +13,12 @@ const Home = () => (
                 <div className="fw-bar">
                 <h2>SHOP THE NEW LIMITED EDITION 20-01 COLLECTION</h2>
                 </div>
+                <NavLink to="/glasses-women">
                 <button>SHOP WOMEN</button>
+                </NavLink>
+                <NavLink to="/glasses-men">
                 <button>SHOP MEN</button>
+                </NavLink>
                 </div>
             </div>
         </div>

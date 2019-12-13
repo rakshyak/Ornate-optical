@@ -11,28 +11,33 @@ input {
 }
 .sup-container .form-container h2 {
     font-size: 36px;
+    letter-spacing: 1.3px;
 }
 .sup-container .form-container .sup-username {
     margin-bottom: 20px;
 }
 .sup-container .form-container .sup-username label {
     font-size: 22px;
+    letter-spacing: 1px;
     display: flex;
     flex-direction: row;
 }
 .sup-container .form-container .sup-email label {
     font-size: 22px;
+    letter-spacing: 1px;
     display: flex;
     flex-direction: row;
 }
 .sup-container .form-container .sup-pwd label {
     font-size: 22px;
     display: flex;
+    letter-spacing: 1px;
     flex-direction: row;
 }
 .sup-container .form-container .sup-pwdconf label {
     font-size: 22px;
     display: flex;
+    letter-spacing: 1px;
     flex-direction: row;
 }
 .sup-container .form-container .sup-email {

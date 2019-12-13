@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Layout from '../shared/Layout'
 import { getItemsMen, getItemsWomen } from '../services/item'
 import '../styles/items.css'
 
@@ -39,14 +38,20 @@ export default class Items extends Component {
     if (this.state.items.length) {
       return this.state.items.map(item => {
         return (
-          <div className='item-box'>
-            <div className="item-1" key={item.id} onClick={() =>
-              this.props.history.push(`items/${item.id}`)}>
-              <h4>{item.name}</h4>
-              <h4>{item.price}</h4>
+          <div className='items-box'>
+            <div className="items-image">
               <img src={`https://ornate-optical.s3.us-east-2.amazonaws.com/${item.image}`} alt=""/>
             </div>
-            <div onClick={this.handleChange}>click me </div>
+            <div className="items-id" key={item.id} onClick={() =>
+              this.props.history.push(`items/${item.id}`)}>
+                </div>
+            <div className="details" onClick={this.handleChange}>MORE DETAILS</div>
+                <div className="items-name">
+              <h4>{item.name}</h4>
+              </div>
+              <div className="items-price">
+              <h4>{item.price}</h4>
+              </div>
           </div>
         )
       })
@@ -62,7 +67,7 @@ export default class Items extends Component {
       return (
         <>
           {!items.length ? <h3>No glasses at this time.</h3> : null}
-          <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}
+          <div className="items-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}
           </div>
         </>
       )
@@ -71,7 +76,7 @@ export default class Items extends Component {
         <div className="landing">
           <div className="main">
             {!this.state.items.length ? <h3>No glasses at this time.</h3> : null}
-            <div className="item-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}</div>
+            <div className="items-container"><img src='https://images.unsplash.com/photo-1543050047-17cdabbc2d1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}<img src='https://images.unsplash.com/photo-1440606797942-6cc04c045447?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60' />{this.renderItems()}</div>
           </div>
         </div>
       )
