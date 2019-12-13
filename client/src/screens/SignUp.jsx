@@ -28,8 +28,8 @@ class SignUp extends Component {
         event.preventDefault()
 
         const { history, setUser } = this.props
-
-        signUp(this.state, 1)
+        console.log(this.state)
+        signUp(this.state)
             .then(() => signInUser(this.state))
             .then(res => setUser(res.user))
             .then(() => history.push('/'))

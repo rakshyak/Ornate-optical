@@ -7,8 +7,9 @@ const { Cart, User, Category, Item, Review } = require('../models')
 
 const signUp = async(req, res) => {
     try {
-        console.log(req.body)
+
         const { username, email, password } = req.body
+        console.log('body', username, email, password)
         const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
         const user = await User.create({
             username: username,
