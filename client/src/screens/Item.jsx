@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../shared/Layout'
 import { getItemById, setReview } from '../services/item'
-import './Item.css'
+import '../styles/item.css'
 
 class Item extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class Item extends Component {
               <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
               <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
             </div>
-            <label>Have it? Write a review.</label>
+            <label>HAVE IT? WRITE A REVIEW.</label>
             <input
               required
               type="textarea"
@@ -134,7 +134,7 @@ class Item extends Component {
               <div className="item-description">
                 <h4>{item.name}</h4>
                 <p><strong>USD</strong>: ${item.price}</p>
-                <p>item.description -- need to add to DB</p>
+                {/* <p>item.description -- need to add to DB</p> */}
                 <p>{item.quantity} left</p>
                 <img src={item.image} alt="" />
                 <div className="item-colors">
@@ -148,14 +148,15 @@ class Item extends Component {
                   ADD REVIEW
             </button>
               </div>
-              {this.reviewForm()}
               <div className="reviews">
+                {this.reviewForm()}
+              
                 {this.renderReviews()}
               </div>
             </div>
           </div>
           <div className="bottom-hero">
-            <h2>Gift-Wrapping Available For All Of Your Holiday Needs</h2>
+            <h2>GIFT-WRAPPING AVAILABLE FOR ALL OF YOUR HOLIDAY NEEDS</h2>
             <img src="https://images.unsplash.com/photo-1482173074468-5b323335debe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
           </div>
         </div>
