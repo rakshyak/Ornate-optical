@@ -145,9 +145,10 @@
     left: 2px;
 }
 .del-wrap{
-    height: 20px;
-    width: 20px;
-    border: red solid 2px;
+    height: 30px;
+    width: 30px;
     text-align: center;
+    font-size: 12px;
+    background-color: red;
 
 }

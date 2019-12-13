@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../shared/Layout'
-import { getItemById, setReview } from '../services/item'
+import { getItemById, setReview, deleteReview} from '../services/item'
+import { Redirect } from 'react-router-dom'
 import '../styles/item.css'
 
 class Item extends Component {
@@ -10,9 +11,12 @@ class Item extends Component {
     this.state = {
       item: null,
       displayReview: false,
-      userReview: []
+      userReview: '',
+      deleted: false
+
     }
   }
+  
 
   async componentDidMount() {
     try {
@@ -75,6 +79,7 @@ class Item extends Component {
       )
     }
   }
+  
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
@@ -83,26 +88,48 @@ class Item extends Component {
     })
   }
 
-  triggerDelete(review) {
-    // let revs = [...this.state.userReview]
-    const userReview = this.state.userReview.filter(i => i.id !== review.id)
-    this.setState({userReview})
-  }
   renderReviews = () => {
     const { Reviews } = this.state.item
     return Reviews.map((review, index) => {
       return (
         <div className="ratingList" key={index}>
           <div className="review">
+          <button className="del-wrap" onClick={this.destroy}>
+                x
+            </button>
             {this.showStar(review.rating)}
-            <div className='del-wrap' onClick={this.triggerDelete.bind(this, review)}>x</div>
             <p>{review.review}</p>
           </div>
         </div>
       )
     })
   }
+  destroy = () => {
 
+    let reviewId = this.state.userReview.id
+    deleteReview(reviewId)
+      .then(() => this.setState({ deleted: true }))
+      .catch(console.error)
+  }
+  render() {
+    const { review, deleted } = this.state
+
+    if (!review) {
+      return <p>Loading...</p>
+    }
+  
+
+  if (deleted) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/item',
+          state: { msg: 'Review succesfully deleted!' }
+        }}
+      />
+    )
+  }
+} 
 
   showStar = (n) => {
     let stars = []
@@ -150,7 +177,6 @@ class Item extends Component {
               </div>
               <div className="reviews">
                 {this.reviewForm()}
-              
                 {this.renderReviews()}
               </div>
             </div>

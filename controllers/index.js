@@ -285,6 +285,21 @@ const createReview = async(req, res) => {
     }
 }
 
+const deleteReview = async(req, res) => {
+    try {
+		const { id } = req.params
+		const deleted = await Review.destroy({
+			where: { id: id }
+		})
+		if (deleted) {
+			return res.status(202).send('Item deleted')
+		}
+		throw new Error('Item not found')
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
+}
+
 
 module.exports = {
     signIn,
@@ -301,6 +316,7 @@ module.exports = {
     deleteItem,
     createReview,
     getItemsMen,
-    getItemsWomen
+    getItemsWomen,
+    deleteReview
 
 }

@@ -52,3 +52,11 @@ export const setReview = async(id, review) => {
         throw error
     }
 }
+export const deleteReview = async (id, review) => {
+    try {
+      const resp = await api.delete(`/review/${id}`, review)
+      return resp.data
+    } catch (error) {
+      throw error
+    }
+  }
