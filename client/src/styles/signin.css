@@ -17,9 +17,11 @@ button {
 
 .sin-container .form-container h2 {
     font-size: 36px;
+    letter-spacing: 1.3px;
 }
 .sin-container .form-container p {
     font-size: 26px;
+    letter-spacing: .7px;
 }
 .sin-container .form-container .sin-username {
     margin-bottom: 40px;
@@ -28,18 +30,24 @@ input {
     height: 30px;
     width: 35em;
     border: 1.5px solid black;
+    font-size: 16px;
+    padding-left: 3px;
+    letter-spacing: .7px;
 }
 input::placeholder {
     padding-left: 3px;
+    letter-spacing: .7px;
+    font-size: 16px;
 }
-
 .sin-container .form-container .sin-username label {
     font-size: 22px;
     display: flex;
+    letter-spacing: 1px;
     flex-direction: row;
 }
 .sin-container .form-container .sin-pwd label {
     font-size: 22px;
     display: flex;
+    letter-spacing: 1px;
     flex-direction: row;
 }

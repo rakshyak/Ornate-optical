@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../shared/Layout'
 import { getItemById, setReview } from '../services/item'
-import './Item.css'
+import '../styles/item.css'
 
 class Item extends Component {
   constructor(props) {
@@ -10,7 +10,8 @@ class Item extends Component {
     this.state = {
       item: null,
       displayReview: false,
-      userReview: ''
+      userReview: '',
+      displayEdit: false
     }
   }
 
@@ -27,6 +28,11 @@ class Item extends Component {
   toggleAddReviewForm = () => {
     this.setState(state => ({
       displayReview: !state.displayReview
+    }))
+  }
+  toggleEditReviewForm = () => {
+    this.setState(state => ({
+      displayEdit: !state.displayEdit
     }))
   }
   onAddReview = (event) => {
@@ -46,6 +52,23 @@ class Item extends Component {
     .then()
       .catch(console.error)
   }
+  onEditReview = (event) => {
+    event.preventDefault();
+    const { id } = this.state.item.Reviews
+    console.log(this.state)
+    console.log(event.target.rating.value)
+    const review = {
+      rating: event.target.rating.value,
+      review: this.state.userReview,
+      itemId: id,
+      userId: null
+    }
+    const { history, setItem } = this.props
+    setReview(id, review)
+      .then(res => setItem(res.review))
+      .then()
+      .catch(console.error)
+  }
   reviewForm = () => {
     while (this.state.displayReview) {
       const { comment } = this.state
@@ -60,7 +83,7 @@ class Item extends Component {
               <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
               <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
             </div>
-            <label>Have it? Write a review.</label>
+            <label>HAVE IT? WRITE A REVIEW.</label>
             <input
               required
               type="textarea"
@@ -82,16 +105,50 @@ class Item extends Component {
         errorMsg: ''
     })
 }
+
+editReviewForm = async () => {
+  while (this.state.displayEdit) {
+    const { comment } = this.state
+    return (
+      <form onSubmit={(e) => { this.onEditReview(e) }}>
+        <div className="review-form">
+          <div className="star-rating">
+            <legend>Please rate:</legend>
+            <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+          </div>
+          <label>HAVE IT? WRITE A REVIEW.</label>
+          <input
+            required
+            type="textarea"
+            name="userReview"
+            value={comment}
+            placeholder={'hi'}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    )
+  }
+}
   renderReviews = () => {
     const { Reviews } = this.state.item
     return Reviews.map((review, input) => {
       return (
+        <>
         <div className="ratingList" key={input}>
           <div className="review">
             {this.showStar(review.rating)}
             <p>{review.review}</p>
+            {this.editReviewForm}
+
           </div>
         </div>
+        </>
       )
     })
   }
@@ -125,7 +182,7 @@ class Item extends Component {
               <div className="item-description">
                 <h4>{item.name}</h4>
                 <p><strong>USD</strong>: ${item.price}</p>
-                <p>item.description -- need to add to DB</p>
+                {/* <p>item.description -- need to add to DB</p> */}
                 <p>{item.quantity} left</p>
                 <img src={item.image} alt=""/>
                 <div className="item-colors">
@@ -139,14 +196,15 @@ class Item extends Component {
                   ADD REVIEW
             </button>
               </div>
-              {this.reviewForm()}
               <div className="reviews">
+                {this.reviewForm()}
+              
                 {this.renderReviews()}
               </div>
             </div>
           </div>
           <div className="bottom-hero">
-            <h2>Gift-Wrapping Available For All Of Your Holiday Needs</h2>
+            <h2>GIFT-WRAPPING AVAILABLE FOR ALL OF YOUR HOLIDAY NEEDS</h2>
             <img src="https://images.unsplash.com/photo-1482173074468-5b323335debe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="" />
           </div>
         </div>
