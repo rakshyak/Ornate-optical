@@ -1,7 +1,3 @@
-* {
-    border: 1px solid red;
-}
-
 .item-container {
     background-color: transparent;
     display: flex;
