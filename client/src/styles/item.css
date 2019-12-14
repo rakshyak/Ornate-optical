@@ -144,3 +144,11 @@
     top: 2px;
     left: 2px;
 }
+.del-wrap{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    font-size: 12px;
+    background-color: red;
+
+}

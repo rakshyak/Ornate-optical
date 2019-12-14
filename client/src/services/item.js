@@ -61,3 +61,13 @@ export const updateReview = async(id, review) => {
         throw error
     }
 }
+
+export const deleteReview = async(id) => {
+    try {
+        const resp = await api.delete(`/reviews/${id}`)
+        return resp
+    } catch(error) {
+
+        throw error
+    }
+}

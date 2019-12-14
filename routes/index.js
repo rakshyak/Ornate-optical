@@ -26,4 +26,5 @@ router.get('/glasses-women', controllers.getItemsWomen)
 
 router.post('/items/:id', controllers.createReview)
 router.put('/reviews/:id', controllers.updateReview)
+router.delete('/reviews/:id', controllers.deleteReview)
 module.exports = router

@@ -293,12 +293,28 @@ const updateReview = async(req, res) => {
         })
         if (updated) {
             const updatedReview = await Review.findOne({ where: { id: id } })
-            return res.status(202).json({ item: updatedItem })
+            return res.status(202).json({ item: updatedReview })
         }
         throw new Error('Review not found')
     } catch (error) {
         return res.status(500).send(error.message)
     }
+}
+
+const deleteReview = async(req, res) => {   
+    try {
+        const { id } = req.params
+        // console.log(review)
+		const deleted = await Review.destroy({
+			where: { id: id }
+		})
+		if (deleted) {
+			return res.status(202).send('review deleted')
+		}
+		throw new Error('Item not found')
+	} catch (error) {
+		return res.status(500).send(error.message)
+	}
 }
 
 
@@ -318,6 +334,7 @@ module.exports = {
     createReview,
     getItemsMen,
     getItemsWomen,
-    updateReview
+    updateReview,
+    deleteReview
 
 }

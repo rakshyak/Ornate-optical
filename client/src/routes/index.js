@@ -46,7 +46,6 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
             path="/users/:id/cart"
             render={props => <Items {...props} key={Math.floor(Math.random() * 100)}/>}
         />
-
     </Switch>
 )
 
