@@ -33,18 +33,18 @@ const Routes = ({ user, setUser, clearUser, addItem, getItem }) => (
         <Route
             exact
             path="/glasses-men"
-            render={props => <Items {...props} />}
+            render={props => <Items {...props} key={Math.floor(Math.random() * 100)}/>}
         />
         <Route
             exact
             path="/glasses-women"
-            render={props => <Items {...props} />}
+            render={props => <Items {...props} key={Math.floor(Math.random() * 100)}/>}
         />
         <AuthenticatedRoute
             exact
             user={user}
             path="/users/:id/cart"
-            render={props => <Items {...props} />}
+            render={props => <Items {...props} key={Math.floor(Math.random() * 100)}/>}
         />
     </Switch>
 )

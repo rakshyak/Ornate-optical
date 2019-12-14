@@ -1,7 +1,8 @@
 import api from './apiConfig'
 
-export const signUp = async (credentials) => {
+export const signUp = async(credentials) => {
     try {
+        console.log('cred', credentials)
         const response = await api.post(`/login/1`, credentials)
         localStorage.setItem('token', response.data.token)
         return response.data
@@ -10,7 +11,7 @@ export const signUp = async (credentials) => {
     }
 }
 
-export const signInUser = async (credentials) => {
+export const signInUser = async(credentials) => {
     try {
         const response = await api.post(`/login/2`, credentials)
         localStorage.setItem('token', response.data.token)

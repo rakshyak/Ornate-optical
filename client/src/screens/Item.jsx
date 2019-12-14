@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Layout from '../shared/Layout'
-import { getItemById, setReview, deleteReview} from '../services/item'
-import { Redirect } from 'react-router-dom'
+import { getItemById, setReview } from '../services/item'
 import '../styles/item.css'
 
 class Item extends Component {
@@ -12,8 +10,7 @@ class Item extends Component {
       item: null,
       displayReview: false,
       userReview: '',
-      deleted: false
-
+      displayEdit: false
     }
   }
   
@@ -33,9 +30,31 @@ class Item extends Component {
       displayReview: !state.displayReview
     }))
   }
+  toggleEditReviewForm = () => {
+    this.setState(state => ({
+      displayEdit: !state.displayEdit
+    }))
+  }
   onAddReview = (event) => {
     event.preventDefault();
     const { id } = this.state.item
+    console.log(this.state)
+    console.log(event.target.rating.value)
+    const review = {
+      rating: event.target.rating.value,
+      review: this.state.userReview,
+      itemId: id,
+      userId: null
+    }
+    const { history, setItem } = this.props
+    setReview(id, review)
+      .then(res => setItem(res.review))
+      .then()
+      .catch(console.error)
+  }
+  onEditReview = (event) => {
+    event.preventDefault();
+    const { id } = this.state.item.Reviews
     console.log(this.state)
     console.log(event.target.rating.value)
     const review = {
@@ -73,7 +92,7 @@ class Item extends Component {
               placeholder="Enter Comment"
               onChange={this.handleChange}
             />
-            <input type="submit" value="Submit" />
+            <button type="submit" value="Submit">SUBMIT</button>
           </div>
         </form>
       )
@@ -86,21 +105,54 @@ class Item extends Component {
       isError: false,
       errorMsg: ''
     })
-  }
+}
 
+editReviewForm = async () => {
+  while (this.state.displayEdit) {
+    const { comment } = this.state
+    return (
+      <form onSubmit={(e) => { this.onEditReview(e) }}>
+        <div className="review-form">
+          <div className="star-rating">
+            <legend>Please rate:</legend>
+            <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+            <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+            <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+            <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+            <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+          </div>
+          <label>HAVE IT? WRITE A REVIEW.</label>
+          <input
+            required
+            type="textarea"
+            name="userReview"
+            value={comment}
+            placeholder={'hi'}
+            onChange={this.handleChange}
+          />
+          <input type="submit" value="Submit" />
+        </div>
+      </form>
+    )
+  }
+}
   renderReviews = () => {
     const { Reviews } = this.state.item
     return Reviews.map((review, index) => {
       return (
-        <div className="ratingList" key={index}>
+        <>
+        <div className="ratingList" key={input}>
           <div className="review">
           <button className="del-wrap" onClick={this.destroy}>
                 x
             </button>
             {this.showStar(review.rating)}
             <p>{review.review}</p>
+            {this.editReviewForm}
+
           </div>
         </div>
+        </>
       )
     })
   }
@@ -161,7 +213,6 @@ class Item extends Component {
               <div className="item-description">
                 <h4>{item.name}</h4>
                 <p><strong>USD</strong>: ${item.price}</p>
-                {/* <p>item.description -- need to add to DB</p> */}
                 <p>{item.quantity} left</p>
                 <img src={item.image} alt="" />
                 <div className="item-colors">

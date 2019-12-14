@@ -52,11 +52,12 @@ export const setReview = async(id, review) => {
         throw error
     }
 }
-export const deleteReview = async (id, review) => {
+
+export const updateReview = async(id, review) => {
     try {
-      const resp = await api.delete(`/review/${id}`, review)
-      return resp.data
+        const resp = await api.put(`/reviews/${id}`, review)
+        return resp
     } catch (error) {
-      throw error
+        throw error
     }
-  }
+}
