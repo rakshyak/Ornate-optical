@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { getItemById, setReview } from '../services/item'
+import { getItemById, setReview, deleteReview } from '../services/item'
 import '../styles/item.css'
-
+import { Redirect, Link } from 'react-router-dom'
 class Item extends Component {
   constructor(props) {
     super(props)
@@ -10,7 +9,9 @@ class Item extends Component {
       item: null,
       displayReview: false,
       userReview: '',
-      displayEdit: false
+      displayEdit: false,
+      deleted: false,
+      rerender: []
     }
   }
   
@@ -20,6 +21,7 @@ class Item extends Component {
       console.log(this.props)
       const item = await getItemById(this.props.match.params.id)
       // const item = await getItemById(1)
+      console.log(item)
       this.setState({ item })
     } catch (err) {
       console.error(err)
@@ -46,10 +48,14 @@ class Item extends Component {
       itemId: id,
       userId: null
     }
-    const { history, setItem } = this.props
+    const { history, getItem } = this.props
+    console.log(this.props)
     setReview(id, review)
-      .then(res => setItem(res.review))
-      .then()
+      .then(() =>{this.forceUpdate()
+      this.props.history.push('/items')
+      this.props.history.push(`/items/${this.props.match.params.id}`)})
+      
+      // .then()
       .catch(console.error)
   }
   onEditReview = (event) => {
@@ -136,14 +142,23 @@ editReviewForm = async () => {
     )
   }
 }
+
+refreshPage = () => {
+  window.location.reload(false)
+}
   renderReviews = () => {
     const { Reviews } = this.state.item
-    return Reviews.map((review, index) => {
+    return Reviews.map((review, input) => {
       return (
         <>
         <div className="ratingList" key={input}>
+        {console.log(review.id)}
           <div className="review">
-          <button className="del-wrap" onClick={this.destroy}>
+          <button className="del-wrap" onClick={() => {this.destroy(review.id)
+          window.location.reload(false)
+          // this.props.history.push(`/items`)
+          // this.props.history.push(`/items/${this.props.match.params.id}`)
+          }}>
                 x
             </button>
             {this.showStar(review.rating)}
@@ -156,19 +171,19 @@ editReviewForm = async () => {
       )
     })
   }
-  destroy = () => {
-
-    let reviewId = this.state.userReview.id
-    deleteReview(reviewId)
-      .then(() => this.setState({ deleted: true }))
+  destroy = (input) => {
+    console.log(input)
+    deleteReview(input)
+      .then(() => 
+        this.setState({ deleted: true }))
       .catch(console.error)
   }
   render() {
-    const { review, deleted } = this.state
+    const { userReview, deleted } = this.state
 
-    if (!review) {
-      return <p>Loading...</p>
-    }
+    // if (!userReview) {
+    //   return <p>Loading...</p>
+    // }
   
 
   if (deleted) {
