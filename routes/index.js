@@ -23,6 +23,7 @@ router.delete('/items/:id', controllers.deleteUser)
 
 router.get('/glasses-men', controllers.getItemsMen)
 router.get('/glasses-women', controllers.getItemsWomen)
+router.get('/reviews/:id', controllers.getReviewById)
 
 router.post('/items/:id', controllers.createReview)
 router.put('/reviews/:id', controllers.updateReview)

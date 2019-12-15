@@ -278,14 +278,35 @@ const createReview = async(req, res) => {
         return res.status(500).send(error.message)
     }
 }
+const getReviewById = async(req, res) => {
+    try {
+        const { id } = req.params
+        const review = await Review.findAll({
+            where: {
+                id: id
+            }
+        })
+        if (review) {
+            return res.status(200).json({ review });
+        }
+        return res.status(404).send('User with the specified ID does not exists');
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+
+}
+
+
+
+
 const updateReview = async(req, res) => {
     try {
         const { id, ...review } = req.body
         const [updated] = await Review.update(review, {
             where: { id: id }
         })
+        console.log('updated', updated)
         if (updated) {
-            const updatedReview = await Review.findOne({ where: { id: id } })
             return res.status(202).json({ item: updatedReview })
         }
         throw new Error('Review not found')
@@ -294,20 +315,20 @@ const updateReview = async(req, res) => {
     }
 }
 
-const deleteReview = async(req, res) => {   
+const deleteReview = async(req, res) => {
     try {
         const { id } = req.params
-        // console.log(review)
-		const deleted = await Review.destroy({
-			where: { id: id }
-		})
-		if (deleted) {
-			return res.status(202).send('review deleted')
-		}
-		throw new Error('Item not found')
-	} catch (error) {
-		return res.status(500).send(error.message)
-	}
+            // console.log(review)
+        const deleted = await Review.destroy({
+            where: { id: id }
+        })
+        if (deleted) {
+            return res.status(202).send('review deleted')
+        }
+        throw new Error('Item not found')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
 }
 
 
@@ -328,6 +349,7 @@ module.exports = {
     getItemsMen,
     getItemsWomen,
     updateReview,
-    deleteReview
+    deleteReview,
+    getReviewById
 
 }
