@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
-import SignIn from '../screens/SignIn'
 import SignOut from '../screens/SignOut'
-import SignUp from '../screens/SignUp'
 import Home from '../screens/Home'
 import Items from '../screens/Items'
 import Item from '../screens/Item'
