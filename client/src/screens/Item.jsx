@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { getItemById, setReview, deleteReview } from '../services/item'
+import { getItemById, setReview, deleteReview, updateReview } from '../services/item'
 import '../styles/item.css'
 import { Redirect, Link } from 'react-router-dom'
 class Item extends Component {
@@ -14,14 +14,16 @@ class Item extends Component {
       rerender: []
     }
   }
-  
+
 
   async componentDidMount() {
+    await this.fetchItems()
+  }
+
+  fetchItems = async () => {
     try {
-      console.log(this.props)
       const item = await getItemById(this.props.match.params.id)
       // const item = await getItemById(1)
-      console.log(item)
       this.setState({ item })
     } catch (err) {
       console.error(err)
@@ -32,16 +34,9 @@ class Item extends Component {
       displayReview: !state.displayReview
     }))
   }
-  toggleEditReviewForm = () => {
-    this.setState(state => ({
-      displayEdit: !state.displayEdit
-    }))
-  }
   onAddReview = (event) => {
     event.preventDefault();
     const { id } = this.state.item
-    console.log(this.state)
-    console.log(event.target.rating.value)
     const review = {
       rating: event.target.rating.value,
       review: this.state.userReview,
@@ -49,32 +44,17 @@ class Item extends Component {
       userId: null
     }
     const { history, getItem } = this.props
-    console.log(this.props)
     setReview(id, review)
-      .then(() =>{this.forceUpdate()
-      this.props.history.push('/items')
-      this.props.history.push(`/items/${this.props.match.params.id}`)})
-      
+      .then(() => {
+        this.forceUpdate()
+        this.props.history.push('/items')
+        this.props.history.push(`/items/${this.props.match.params.id}`)
+      })
+
       // .then()
       .catch(console.error)
   }
-  onEditReview = (event) => {
-    event.preventDefault();
-    const { id } = this.state.item.Reviews
-    console.log(this.state)
-    console.log(event.target.rating.value)
-    const review = {
-      rating: event.target.rating.value,
-      review: this.state.userReview,
-      itemId: id,
-      userId: null
-    }
-    const { history, setItem } = this.props
-    setReview(id, review)
-      .then(res => setItem(res.review))
-      .then()
-      .catch(console.error)
-  }
+
   reviewForm = () => {
     while (this.state.displayReview) {
       const { comment } = this.state
@@ -104,99 +84,127 @@ class Item extends Component {
       )
     }
   }
-  
+
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value,
       isError: false,
       errorMsg: ''
     })
-}
-
-editReviewForm = async () => {
-  while (this.state.displayEdit) {
-    const { comment } = this.state
-    return (
-      <form onSubmit={(e) => { this.onEditReview(e) }}>
-        <div className="review-form">
-          <div className="star-rating">
-            <legend>Please rate:</legend>
-            <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
-            <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
-            <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
-            <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
-            <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
-          </div>
-          <label>HAVE IT? WRITE A REVIEW.</label>
-          <input
-            required
-            type="textarea"
-            name="userReview"
-            value={comment}
-            placeholder={'hi'}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Submit" />
-        </div>
-      </form>
-    )
   }
-}
+  toggleEditReviewForm = () => {
+    this.setState(state => ({
+      displayEdit: !state.displayEdit
+    }))
+  }
 
-refreshPage = () => {
-  window.location.reload(false)
-}
+  editReviewForm = (review) => {
+    while (this.state.displayEdit) {
+      const { comment } = this.state
+      return (
+        <form onSubmit={(e) => {
+          this.onEditReview(e, review.id)
+          window.location.reload(false)
+        }}>
+          <div className="review-form">
+            <button className="del-wrap" onClick={() => this.toggleEditReviewForm()}>X</button>
+            <div className="star-rating">
+              <legend>Edit your Rating</legend>
+              <input type="radio" id="star5" name="rating" value="5" /><label htmlFor="star5" title="Rocks!">5 stars</label>
+              <input type="radio" id="star4" name="rating" value="4" /><label htmlFor="star4" title="Pretty good">4 stars</label>
+              <input type="radio" id="star3" name="rating" value="3" /><label htmlFor="star3" title="Meh">3 stars</label>
+              <input type="radio" id="star2" name="rating" value="2" /><label htmlFor="star2" title="Kinda bad">2 stars</label>
+              <input type="radio" id="star1" name="rating" value="1" /><label htmlFor="star1" title="Sucks big time">1 star</label>
+              <cite><small><a href="http://code.iamkate.com/html-and-css/star-rating-widget/">Stars by Kate Rose Morley</a></small></cite>
+            </div>
+            <label>Edit your Review</label>
+            <input
+              required
+              type="textarea"
+              name="userReview"
+              value={comment}
+              placeholder={review.review}
+              onChange={this.handleChange}
+            />
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
+      )
+    }
+  }
+  onEditReview = async (event, id) => {
+    event.preventDefault();
+
+    const review = {
+      rating: event.target.rating.value,
+      review: this.state.userReview,
+      id: id
+    }
+    await updateReview(review)
+      .then(() => this.setState({ updated: true }))
+      .catch(console.error)
+  }
+
+  refreshPage = () => {
+    window.location.reload(false)
+  }
   renderReviews = () => {
     const { Reviews } = this.state.item
     return Reviews.map((review, input) => {
-      return (
-        <>
-        <div className="ratingList" key={input}>
-        {console.log(review.id)}
-          <div className="review">
-          <button className="del-wrap" onClick={() => {this.destroy(review.id)
-          window.location.reload(false)
-          // this.props.history.push(`/items`)
-          // this.props.history.push(`/items/${this.props.match.params.id}`)
-          }}>
-                x
-            </button>
-            {this.showStar(review.rating)}
-            <p>{review.review}</p>
-            {this.editReviewForm}
+      return (this.state.displayEdit) ? this.editReviewForm(review) :
+        (
+          <div className="ratingList" key={input}>
+            {this.editReviewForm()}
+            <div className="review">
+              <div>
+                <button className="del-wrap" onClick={() => {
+                  this.destroy(review.id)
+                  window.location.reload(false)
+                  // this.props.history.push(`/items`)
+                  // this.props.history.push(`/items/${this.props.match.params.id}`)
+                }}>
+                  X
+                </button>
+                <button className="edit-wrap" onClick={() => {
+                  this.toggleEditReviewForm()
+                }}>
+                  Edit
+              </button>
+              </div>
+              {this.showStar(review.rating)}
+              <p>{review.review}</p>
 
+            </div>
           </div>
-        </div>
-        </>
-      )
+
+        )
     })
   }
   destroy = (input) => {
-    console.log(input)
     deleteReview(input)
-      .then(() => 
+      .then(() =>
         this.setState({ deleted: true }))
       .catch(console.error)
   }
   render() {
-    const { userReview, deleted } = this.state
+    const { userReview, deleted, updated } = this.state
 
     // if (!userReview) {
     //   return <p>Loading...</p>
     // }
-  
 
-  if (deleted) {
-    return (
-      <Redirect
-        to={{
-          pathname: '/item',
-          state: { msg: 'Review succesfully deleted!' }
-        }}
-      />
-    )
+
+    if (deleted || updated) {
+      return (
+        <Redirect
+          to={{
+            pathname: '/item',
+            state: { msg: '' }
+          }}
+        />
+      )
+    }
   }
-} 
 
   showStar = (n) => {
     let stars = []
@@ -212,7 +220,6 @@ refreshPage = () => {
 
   render() {
     const { item } = this.state
-    console.log('state here', this.state)
     if (!item) {
       return <p>SORRY ITEM IS OUT OF STOCK</p>
     }

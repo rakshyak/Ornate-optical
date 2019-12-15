@@ -9,7 +9,6 @@ const signUp = async(req, res) => {
     try {
 
         const { username, email, password } = req.body
-        console.log('body', username, email, password)
         const password_digest = await bcrypt.hash(password, SALT_ROUNDS)
         const user = await User.create({
             username: username,
@@ -24,16 +23,13 @@ const signUp = async(req, res) => {
         const token = jwt.sign(payload, TOKEN_KEY)
         return res.status(201).json({ user, token })
     } catch (error) {
-        console.log(
-            'You made it to the signUp controller, but there was an error ;('
-        )
+
         return res.status(400).json({ error: error.message })
     }
 }
 
 const signIn = async(req, res) => {
     try {
-        console.log(req.body)
         const { username, password } = req.body
         const user = await User.findOne({
             where: {
@@ -82,7 +78,6 @@ const getAllUsers = async(req, res) => {
 }
 
 const getUserById = async(req, res) => {
-    console.log('start')
     try {
         const { id } = req.params;
         const user = await User.findOne({
@@ -93,7 +88,6 @@ const getUserById = async(req, res) => {
             ],
             where: { id: id }
         });
-        console.log(user)
         if (user) {
             return res.status(200).json({ user });
         }
@@ -136,7 +130,6 @@ const deleteUser = async(req, res) => {
 
 const createItem = async(req, res) => {
     try {
-        console.log('req.body:', req.body)
         const createdItem = await Item.create(req.body)
 
         return res.status(201).json({
@@ -285,14 +278,35 @@ const createReview = async(req, res) => {
         return res.status(500).send(error.message)
     }
 }
+const getReviewById = async(req, res) => {
+    try {
+        const { id } = req.params
+        const review = await Review.findAll({
+            where: {
+                id: id
+            }
+        })
+        if (review) {
+            return res.status(200).json({ review });
+        }
+        return res.status(404).send('User with the specified ID does not exists');
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+
+}
+
+
+
+
 const updateReview = async(req, res) => {
     try {
         const { id, ...review } = req.body
         const [updated] = await Review.update(review, {
             where: { id: id }
         })
+        console.log('updated', updated)
         if (updated) {
-            const updatedReview = await Review.findOne({ where: { id: id } })
             return res.status(202).json({ item: updatedReview })
         }
         throw new Error('Review not found')
@@ -301,20 +315,20 @@ const updateReview = async(req, res) => {
     }
 }
 
-const deleteReview = async(req, res) => {   
+const deleteReview = async(req, res) => {
     try {
         const { id } = req.params
-        // console.log(review)
-		const deleted = await Review.destroy({
-			where: { id: id }
-		})
-		if (deleted) {
-			return res.status(202).send('review deleted')
-		}
-		throw new Error('Item not found')
-	} catch (error) {
-		return res.status(500).send(error.message)
-	}
+            // console.log(review)
+        const deleted = await Review.destroy({
+            where: { id: id }
+        })
+        if (deleted) {
+            return res.status(202).send('review deleted')
+        }
+        throw new Error('Item not found')
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
 }
 
 
@@ -335,6 +349,7 @@ module.exports = {
     getItemsMen,
     getItemsWomen,
     updateReview,
-    deleteReview
+    deleteReview,
+    getReviewById
 
 }

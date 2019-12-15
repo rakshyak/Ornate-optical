@@ -53,9 +53,10 @@ export const setReview = async(id, review) => {
     }
 }
 
-export const updateReview = async(id, review) => {
+export const updateReview = async(review) => {
     try {
-        const resp = await api.put(`/reviews/${id}`, review)
+
+        const resp = await api.put(`/reviews/${review.id}`, review)
         return resp
     } catch (error) {
         throw error
@@ -66,7 +67,7 @@ export const deleteReview = async(id) => {
     try {
         const resp = await api.delete(`/reviews/${id}`)
         return resp
-    } catch(error) {
+    } catch (error) {
 
         throw error
     }
