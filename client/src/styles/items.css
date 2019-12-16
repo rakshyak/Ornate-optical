@@ -91,7 +91,3 @@
     flex-grow: 1;
     margin-left: 50px;
 }
-
-.items-box:hover {
-    box-shadow: 1px 1px 3px 2px;
-}

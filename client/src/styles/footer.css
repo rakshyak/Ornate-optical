@@ -62,3 +62,43 @@ footer .follow-bar .fbk-bar {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+@media only screen 
+and (max-width: 667px) {
+    footer {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 225%;
+    }
+    footer .customer-footer ul {
+        display: none;
+    }
+    footer .s-ability-footer ul {
+        display: none;
+    }
+    footer .follow-bar ul {
+        display: none;
+    }
+    footer .customer-footer {
+        flex-direction: row;
+        margin-left: 0;
+        color: white;
+        background-color: black;
+        border: 3px white;
+    }
+    footer .s-ability-footer {
+        flex-direction: row;
+        margin: 0;
+        color: white;
+        background-color: black;
+        border: 3px white;
+    }
+    footer .follow-bar {
+        flex-direction: row;
+        margin: 0;
+        color: white;
+        background-color: black;
+        border: 3px white;
+    }
+}
