@@ -39,3 +39,47 @@ nav .login-bar li {
     margin: 0px 3em;
 }
 
+@media only screen 
+and (max-width: 812px) {
+    nav {
+        flex-direction: column;
+        border: 3px solid black;
+        margin-bottom: 30px;
+    }
+    nav .main-bar {
+        flex-direction: column;
+    }
+    nav .main-bar li:nth-child(3){
+        display: none;
+    }
+    nav .login-bar li:nth-child(2){
+        display: none;
+    }
+    a.title.active {
+        background-color: black;
+        color: white;
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+    }
+    a {
+        text-align: center;
+        margin-left: 0;  
+    }
+    nav .login-bar {
+        margin-left: 0;
+    }
+    nav .main-bar {
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    nav .main-bar li:nth-child() {
+        color: red;
+    }
+    .login-bar {
+        margin: 0;
+    }
+
+}
+
