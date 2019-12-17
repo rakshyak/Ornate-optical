@@ -91,3 +91,81 @@
     flex-grow: 1;
     margin-left: 50px;
 }
+
+@media only screen 
+and (max-width: 812px) {
+    img:nth-child(1) {
+        width: 80%;
+        margin-left: 35px;
+        margin-bottom: 40px;
+    }
+    img:nth-child(11) {
+        width: 80%;
+        margin-left: 35px;
+        margin-bottom: 40px;
+    }
+    .items-box {
+        flex-direction: column;
+    }
+    .items-container .items-box {
+     display: inline;
+     flex-direction: column;
+    }
+   
+    .items-box:nth-of-type(2) {
+        margin-right: 0;
+    }
+    
+    .items-box:nth-of-type(3) {
+        margin-right: 0;
+    }
+    
+    .items-box:nth-of-type(5) {
+        margin-left: 45px;
+    }
+    
+    .items-box:nth-of-type(7) {
+        margin-left: 40px;
+    }
+    
+    .items-box:nth-of-type(8) {
+        margin-left: 40px;
+    }
+    
+    .items-box:nth-of-type(9) {
+        margin-left: 40px;
+    }
+    
+    .items-box:nth-of-type(12) {
+        margin-left: 40px;
+    }
+    
+    .items-box:nth-of-type(14) {
+        margin-left: 45px;
+    }
+    
+    .items-box:nth-of-type(10) {
+        margin-left: 45px;
+    }
+    .items-box .desc-cont {
+        margin-top: 0;
+        margin-left: 115px;
+    }
+    .items-box .items-price {
+        margin-left: 0;
+    }
+    .items-box .items-image {
+        margin-left: 0;
+    }
+    .items-box .items-name {
+        margin-left: 0;
+    }
+    .items-box .desc-cont .details {
+        margin-left: 0;
+    }
+    .items-box .desc-cont h4 {
+        font-size: 20px;
+    }
+
+    
+}

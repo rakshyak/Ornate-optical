@@ -80,6 +80,9 @@ and (max-width: 812px) {
     .login-bar {
         margin: 0;
     }
+    nav ul {
+        padding-inline-start: 0;
+    }
 
 }
 
