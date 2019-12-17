@@ -117,6 +117,39 @@
     font-weight: 550;
 }
 
+@media only screen 
+and (max-width: 812px) {
+    .bottom-bar {
+        flex-direction: column;
+    }
+    .bottom-bar p {
+        margin-bottom: 30px;
+    }
+    .home-container {
+        display: inline
+    }
+    .location-bar .img img {
+       display: none
+    }
+    .location-bar .location-details {
+        margin-left: 15px;
+    }
+    .bsellers-container {
+        flex-direction: column;
+    }
+    .bsellers-container .bseller1 {
+        margin-bottom: 0;
+    }
+    .hero-container .img-hero .bottom-centered {
+        left: 2%;
+        font-size: 16px;
+    }
+    .hero-container .img-hero .bottom-centered button {
+        margin-left: 40px;
+    }
+
+}
+
 
 
 

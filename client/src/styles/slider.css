@@ -31,3 +31,19 @@
    top: 160%;
 }
 
+@media only screen 
+and (max-width: 812px) {
+    .slider {
+        height: 275px;
+    }
+    .slider .slider-wrapper {
+        display: none;
+    }
+    .slider .left-arrow {
+        display: none;
+    }
+    .slider .right-arrow {
+        display: none;
+    }
+}
+
