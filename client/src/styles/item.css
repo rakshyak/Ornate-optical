@@ -176,3 +176,25 @@
     text-align: center;
     margin-left: 200px;
 }
+
+@media only screen 
+and (max-width: 812px) {
+    .item-top {
+        flex-direction: column;
+    }
+    .item-description {
+        margin-left: 20px;
+    }
+    .add-review {
+        display: flex;
+        flex-direction: column;
+        margin-left: 20px;
+    }
+    .review-form {
+        display: flex;
+    }
+    .reviews {
+        margin-left: 20px;
+    }
+    
+}
